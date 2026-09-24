@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" width="600" height="480" fill="none">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#0047BA"/>
+    </linearGradient>
+    <linearGradient id="softBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0066FF" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0047BA" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Clean, minimalist background card container -->
+  <rect x="50" y="40" width="500" height="400" rx="32" fill="url(#softBg)" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <!-- Plain, ultra-bold, clean 404 typographic icon -->
+  <g filter="url(#softShadow)">
+    <text x="300" y="275" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-weight="900" font-size="160" fill="url(#textGrad)" letter-spacing="-6">404</text>
+  </g>
+</svg>

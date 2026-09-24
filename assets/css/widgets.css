@@ -1,0 +1,495 @@
+/**
+ * FiberGrid Widget Component Styles
+ *
+ * Scoped under .fg-wrap to guarantee isolation.
+ * @package FiberGrid
+ */
+
+/* ==========================================================================
+   1. HERO TELEMETRY SECTION
+   ========================================================================== */
+.fg-hero-section {
+    position: relative;
+    padding: 80px 0 100px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.fg-hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.fg-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.fg-hero-title {
+    font-size: clamp(34px, 4.2vw, 54px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--fg-color-secondary);
+    margin-bottom: 20px;
+}
+
+.fg-hero-title span.highlight {
+    color: var(--fg-color-primary);
+}
+
+.fg-hero-lede {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--fg-color-text-muted);
+    max-width: 540px;
+    margin-bottom: 32px;
+}
+
+.fg-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.fg-hero-telemetry-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 18px;
+    background: var(--fg-color-surface-ice);
+    border: 1px solid var(--fg-color-grid-line);
+    border-radius: var(--fg-radius-md);
+    font-size: 13px;
+    font-family: var(--fg-font-mono);
+}
+
+.fg-hero-telemetry-box .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fg-hero-map-canvas {
+    position: relative;
+    border-radius: var(--fg-radius-xl);
+    background: #FFFFFF;
+    border: 1px solid var(--fg-color-grid-line);
+    padding: 16px;
+    box-shadow: var(--fg-shadow-md);
+    overflow: hidden;
+}
+
+.fg-hero-map-canvas img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--fg-radius-lg);
+}
+
+/* ==========================================================================
+   2. TRUST & CARRIER PEERING RIBBON
+   ========================================================================== */
+.fg-carrier-ribbon {
+    padding: 32px 0;
+    background: #FFFFFF;
+    border-top: 1px solid var(--fg-color-grid-line);
+    border-bottom: 1px solid var(--fg-color-grid-line);
+}
+
+.fg-carrier-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.fg-carrier-title-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.fg-carrier-stat {
+    font-family: var(--fg-font-headline);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--fg-color-secondary);
+    line-height: 1;
+}
+
+.fg-carrier-title {
+    font-family: var(--fg-font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--fg-color-text-dim);
+    text-transform: uppercase;
+}
+
+.fg-carrier-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 36px;
+}
+
+.fg-carrier-logo-item {
+    font-family: var(--fg-font-headline);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--fg-color-text-main);
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.fg-carrier-logo-item:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    color: var(--fg-color-primary);
+}
+
+/* ==========================================================================
+   3. TELEMETRY CARDS (UPTIME, LATENCY, NOC)
+   ========================================================================== */
+.fg-telemetry-section {
+    padding: 80px 0;
+    background: var(--fg-color-surface-ice);
+}
+
+.fg-telemetry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.fg-telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.fg-telemetry-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fg-color-grid-line);
+    border-radius: var(--fg-radius-xl);
+    padding: 28px;
+    box-shadow: var(--fg-shadow-sm);
+    display: flex;
+    flex-col: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+}
+
+.fg-telemetry-card:hover {
+    box-shadow: var(--fg-shadow-lg);
+    border-color: rgba(0, 102, 255, 0.3);
+}
+
+.fg-telemetry-card .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.fg-telemetry-card .metric-val {
+    font-family: var(--fg-font-mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fg-color-secondary);
+    line-height: 1.1;
+}
+
+.fg-telemetry-card .metric-label {
+    font-size: 13px;
+    color: var(--fg-color-text-muted);
+    margin-top: 4px;
+}
+
+.fg-telemetry-card .card-index {
+    font-family: var(--fg-font-headline);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--fg-color-grid-line);
+    line-height: 1;
+}
+
+.fg-sparkline-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 48px;
+    margin-top: 16px;
+}
+
+.fg-sparkline-bar {
+    flex: 1;
+    border-radius: 2px;
+    background: var(--fg-color-primary);
+    transition: height 0.3s ease;
+}
+
+/* ==========================================================================
+   4. SOLUTIONS & SERVICE TIERS GRID
+   ========================================================================== */
+.fg-solutions-section {
+    padding: 90px 0;
+    background: #FFFFFF;
+}
+
+.fg-solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.fg-solution-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fg-color-grid-line);
+    border-radius: var(--fg-radius-xl);
+    padding: 36px;
+    box-shadow: var(--fg-shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.fg-solution-card:hover {
+    border-color: var(--fg-color-primary);
+    box-shadow: var(--fg-shadow-md);
+    transform: translateY(-4px);
+}
+
+.fg-solution-card.featured {
+    border-color: var(--fg-color-primary);
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);
+    box-shadow: var(--fg-shadow-md);
+}
+
+.fg-solution-card.featured::before {
+    content: 'RECOMMENDED';
+    position: absolute;
+    top: -12px;
+    left: 36px;
+    background: var(--fg-color-primary);
+    color: #FFFFFF;
+    font-family: var(--fg-font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: var(--fg-radius-full);
+}
+
+.fg-solution-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--fg-radius-lg);
+    background: var(--fg-color-primary-light);
+    color: var(--fg-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+}
+
+.fg-solution-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.fg-solution-card p {
+    font-size: 15px;
+    color: var(--fg-color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.fg-solution-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+    border-top: 1px solid var(--fg-color-grid-line);
+    padding-top: 18px;
+}
+
+.fg-solution-specs li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--fg-color-text-main);
+    padding: 6px 0;
+}
+
+.fg-solution-specs li .check {
+    color: var(--fg-color-status-healthy);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   5. LOOKING GLASS / NETWORK PING DIAGNOSTIC WIDGET
+   ========================================================================== */
+.fg-looking-glass-widget {
+    background: var(--fg-color-midnight);
+    border-radius: var(--fg-radius-xl);
+    padding: 40px;
+    color: #FFFFFF;
+    box-shadow: var(--fg-shadow-lg);
+}
+
+.fg-looking-glass-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.fg-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fg-input-box label {
+    font-family: var(--fg-font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #94A3B8;
+}
+
+.fg-input-control {
+    background: #0F172A;
+    border: 1px solid #334155;
+    border-radius: var(--fg-radius-md);
+    color: #FFFFFF;
+    padding: 12px 16px;
+    font-family: var(--fg-font-mono);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.fg-input-control:focus {
+    border-color: var(--fg-color-primary);
+}
+
+.fg-terminal-output {
+    margin-top: 24px;
+    background: #020617;
+    border: 1px solid #1E293B;
+    border-radius: var(--fg-radius-md);
+    padding: 20px;
+    font-family: var(--fg-font-mono);
+    font-size: 13px;
+    line-height: 1.6;
+    color: #38BDF8;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   6. RACK CALCULATOR WIDGET (COLOCATION)
+   ========================================================================== */
+.fg-rack-calc-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fg-color-grid-line);
+    border-radius: var(--fg-radius-xl);
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.fg-rack-selector-btns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.fg-rack-btn {
+    padding: 14px;
+    text-align: center;
+    border: 1px solid var(--fg-color-grid-line);
+    background: var(--fg-color-surface-ice);
+    border-radius: var(--fg-radius-md);
+    cursor: pointer;
+    font-family: var(--fg-font-headline);
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.fg-rack-btn.active {
+    background: var(--fg-color-primary);
+    color: #FFFFFF;
+    border-color: var(--fg-color-primary);
+}
+
+/* ==========================================================================
+   7. SEVERED ROUTE 404 SECTION
+   ========================================================================== */
+.fg-404-section {
+    padding: 100px 0;
+    background: var(--fg-color-midnight);
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.fg-404-illustration {
+    max-width: 480px;
+    margin: 0 auto 36px;
+}
+
+.fg-404-illustration svg, .fg-404-illustration img {
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .fg-hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .fg-telemetry-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .fg-solutions-grid {
+        grid-template-columns: 1fr;
+    }
+    .fg-looking-glass-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .fg-rack-calc-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .fg-telemetry-grid {
+        grid-template-columns: 1fr;
+    }
+    .fg-looking-glass-form {
+        grid-template-columns: 1fr;
+    }
+    .fg-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

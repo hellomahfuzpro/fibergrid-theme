@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" width="600" height="480" fill="none">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#0047BA"/>
+    </linearGradient>
+
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <linearGradient id="amberAlert" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <linearGradient id="roseAlert" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+
+    <linearGradient id="fiberLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <linearGradient id="fiberRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <filter id="glowSubtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softCardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#0047BA" flood-opacity="0.08"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#002D7A" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient background glow & radar telemetry concentric rings -->
+  <circle cx="300" cy="225" r="200" fill="url(#bgGlow)"/>
+  <circle cx="300" cy="225" r="190" stroke="#E0E7FF" stroke-width="1.2" stroke-dasharray="4 6"/>
+  <circle cx="300" cy="225" r="140" stroke="#BFDBFE" stroke-width="1.2" stroke-opacity="0.6"/>
+  <circle cx="300" cy="225" r="85" stroke="#93C5FD" stroke-width="1" stroke-dasharray="3 5" stroke-opacity="0.5"/>
+
+  <!-- Optical Waveguides / Grid Traces (Subtle) -->
+  <path d="M 40 225 H 170" stroke="url(#fiberLeft)" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  <path d="M 430 225 H 560" stroke="url(#fiberRight)" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  
+  <path d="M 90 120 L 170 180" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+  <path d="M 510 120 L 430 180" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+  <path d="M 120 330 L 190 280" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+  <path d="M 480 330 L 410 280" stroke="#BFDBFE" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+
+  <!-- Floating Optical Node Badges -->
+  <!-- Top Left Node -->
+  <g transform="translate(100, 95)">
+    <rect x="0" y="0" width="44" height="44" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#softCardShadow)"/>
+    <circle cx="22" cy="22" r="5" fill="#0066FF"/>
+    <circle cx="22" cy="22" r="11" stroke="#0066FF" stroke-width="1.5" stroke-dasharray="2 3" opacity="0.7"/>
+  </g>
+
+  <!-- Top Right Node: Diagnostic / Alert -->
+  <g transform="translate(456, 95)">
+    <rect x="0" y="0" width="44" height="44" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#softCardShadow)"/>
+    <path d="M 16 28 L 22 16 L 28 28 Z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" fill="#FEF3C7"/>
+    <circle cx="22" cy="25" r="1" fill="#D97706"/>
+    <line x1="22" y1="20" x2="22" y2="23" stroke="#D97706" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bottom Left Node -->
+  <g transform="translate(80, 310)">
+    <rect x="0" y="0" width="42" height="42" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#softCardShadow)"/>
+    <path d="M 15 21 H 27 M 21 15 V 27" stroke="#0066FF" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bottom Right Node -->
+  <g transform="translate(478, 310)">
+    <rect x="0" y="0" width="42" height="42" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#softCardShadow)"/>
+    <path d="M 16 26 L 26 16 M 18 16 H 26 V 24" stroke="#0066FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Main Central Enterprise Router / Optical Switch Unit -->
+  <g filter="url(#softCardShadow)">
+    <!-- Outer Chassis -->
+    <rect x="175" y="85" width="250" height="280" rx="28" fill="#FFFFFF" stroke="#DCE7F6" stroke-width="2"/>
+    
+    <!-- Top Chassis Port Header -->
+    <rect x="195" y="105" width="210" height="44" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+    <!-- Status LEDs -->
+    <circle cx="218" cy="127" r="4" fill="#10B981"/>
+    <circle cx="232" cy="127" r="4" fill="#3B82F6"/>
+    <circle cx="246" cy="127" r="4" fill="#94A3B8"/>
+    <!-- Activity bar -->
+    <rect x="270" y="123" width="70" height="8" rx="4" fill="#E2E8F0"/>
+    <rect x="270" y="123" width="34" height="8" rx="4" fill="#0066FF"/>
+    <rect x="360" y="120" width="30" height="14" rx="5" fill="#EFF6FF"/>
+    <text x="375" y="130" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#0066FF" letter-spacing="0.5">ETH-0</text>
+
+    <!-- Center Display: Optical Core Terminal with 404 Disconnect -->
+    <rect x="195" y="162" width="210" height="126" rx="18" fill="url(#brandGrad)" filter="url(#glowSubtle)"/>
+    
+    <!-- Inner subtle tech pattern inside display -->
+    <path d="M 195 200 Q 250 185 300 200 T 405 190" stroke="#60A5FA" stroke-width="1" stroke-opacity="0.3" fill="none"/>
+    <path d="M 195 245 Q 260 260 320 235 T 405 250" stroke="#60A5FA" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+    
+    <!-- Luminous 404 Typography -->
+    <text x="300" y="228" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="52" fill="#FFFFFF" letter-spacing="-1">404</text>
+    
+    <!-- Badge pill inside display -->
+    <g transform="translate(225, 246)">
+      <rect x="0" y="0" width="150" height="24" rx="12" fill="#002D7A" fill-opacity="0.6" stroke="#60A5FA" stroke-width="1" stroke-opacity="0.4"/>
+      <circle cx="14" cy="12" r="3.5" fill="#EF4444"/>
+      <text x="82" y="15.5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="#E0F2FE" letter-spacing="1.5">ROUTE UNREACHABLE</text>
+    </g>
+
+    <!-- Bottom Port Bay / SFP+ Optical Receptacles -->
+    <rect x="195" y="300" width="210" height="46" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2"/>
+    
+    <!-- Optical SFP Ports with Fiber Plug-in Points -->
+    <!-- Left Port (Active / Emitting) -->
+    <rect x="214" y="313" width="34" height="20" rx="6" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <circle cx="225" cy="323" r="3.5" fill="#0066FF"/>
+    <circle cx="237" cy="323" r="3.5" fill="#0066FF"/>
+    
+    <!-- Port separator line -->
+    <line x1="262" y1="314" x2="262" y2="332" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <!-- Right Port (Dropped / Disconnected) -->
+    <rect x="352" y="313" width="34" height="20" rx="6" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5"/>
+    <circle cx="363" cy="323" r="3.5" fill="#EF4444"/>
+    <circle cx="375" cy="323" r="3.5" fill="#EF4444"/>
+
+    <!-- Mid Telemetry Signal Lines -->
+    <line x1="275" y1="320" x2="335" y2="320" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+    <line x1="275" y1="326" x2="315" y2="326" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Severed / Unplugged Fiber Optic Patch Cables in Foreground -->
+  <!-- Left Optical Cable Routing into Left SFP Port -->
+  <path d="M 80 410 C 140 410 180 395 210 365 C 224 351 228 340 231 333" stroke="url(#fiberLeft)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <path d="M 80 410 C 140 410 180 395 210 365 C 224 351 228 340 231 333" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="8 12" fill="none" opacity="0.8"/>
+
+  <!-- Right Optical Cable Severed / Detached Endpoint -->
+  <path d="M 520 410 C 460 410 420 395 385 365" stroke="url(#fiberRight)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Disconnected Cable Connector Tip -->
+  <g transform="translate(372, 352) rotate(-40)">
+    <rect x="-6" y="-12" width="12" height="24" rx="4" fill="#0047BA" stroke="#0066FF" stroke-width="1.5"/>
+    <rect x="-3" y="-16" width="6" height="5" rx="1.5" fill="#38BDF8"/>
+    <!-- Unplugged light spark / pulse -->
+    <circle cx="0" cy="-19" r="4.5" fill="#EF4444" opacity="0.9"/>
+    <circle cx="0" cy="-19" r="9" fill="#EF4444" opacity="0.25"/>
+  </g>
+
+  <!-- Central Disconnection Alert / Warning Badge -->
+  <g transform="translate(300, 390)" filter="url(#softCardShadow)">
+    <circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#FECACA" stroke-width="2"/>
+    <circle cx="0" cy="0" r="17" fill="#FEE2E2"/>
+    <path d="M -1 -7 L -1 3 M -1 7 L -1 8" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-1" cy="7.5" r="1.2" fill="#DC2626"/>
+  </g>
+
+  <!-- Optical Photonic Light Particles along the Path -->
+  <circle cx="160" cy="392" r="3" fill="#38BDF8"/>
+  <circle cx="120" cy="406" r="2.5" fill="#0066FF"/>
+  <circle cx="445" cy="390" r="2.5" fill="#60A5FA"/>
+  <circle cx="480" cy="404" r="3" fill="#0066FF"/>
+
+  <!-- Protocol Subtext Footer Ribbon -->
+  <g transform="translate(300, 445)">
+    <text x="0" y="0" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="11" fill="#64748B" letter-spacing="1.5">
+      BGP CORE DISCONNECT <tspan fill="#CBD5E1">•</tspan> HOP_DROPPED: NULL0
+    </text>
+  </g>
+</svg>
