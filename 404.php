@@ -214,12 +214,8 @@ We offer standardized Quarter Racks (10U Secured), Half Racks (21U Partitioned),
 </div>
 </div>
 <div class="flex items-center gap-3 shrink-0">
-<a class="bg-deep-navy text-on-primary font-label-ui text-label-ui font-semibold px-5 py-2.5 rounded-lg hover:bg-slate-surface transition-colors shadow-sm" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
-Open Support Ticket
-</a>
-<a class="bg-surface-container-lowest text-deep-navy font-label-ui text-label-ui font-semibold px-5 py-2.5 rounded-lg hover:bg-surface-ice transition-colors shadow-sm flex items-center gap-2 border border-surface-container-high/60" href="<?php echo esc_url( get_theme_mod( 'fg_header_client_portal_url', home_url( '/contact/#portal' ) ) ); ?>">
-<span class="material-symbols-outlined text-[18px] text-optical-blue">shield_person</span>
-Customer Portal
+<a class="bg-optical-blue text-on-primary font-label-ui text-label-ui font-semibold px-6 py-3 rounded-lg hover:bg-primary transition-colors shadow-sm" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
+Contact Engineering Team
 </a>
 </div>
 </div>

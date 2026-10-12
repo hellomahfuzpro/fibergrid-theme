@@ -252,7 +252,7 @@ class FiberGrid_Widget_BlogSingleSec3 extends FiberGrid_Base_Widget {
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
-<span class=""><strong>Transparent Looking Glass Access:</strong> Real-time peering verification, route traceroutes, and BGP community flags accessible 24/7 via the FiberGrid customer portal.</span>
+<span class=""><strong>Transparent Looking Glass Access:</strong> Real-time peering verification, route traceroutes, and BGP community flags accessible 24/7 via the FiberGrid looking glass &amp; telemetry hub.</span>
 </li>
 </ul>
 </div>
@@ -318,7 +318,15 @@ class FiberGrid_Widget_BlogSingleSec3 extends FiberGrid_Base_Widget {
 <p class="font-body-sm text-body-sm text-secondary">
               Our optical network architects are ready to review your current BGP routing matrix and quote direct interconnect lines.
             </p>
-<a class="inline-flex items-center justify-between text-primary font-label-ui text-label-ui font-bold hover:gap-2 transition-all pt-1" href="
+<a class="inline-flex items-center justify-between text-primary font-label-ui text-label-ui font-bold hover:gap-2 transition-all pt-1" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
+    <span>Schedule Architecture Review</span>
+    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</section>
         <?php
     }
 }

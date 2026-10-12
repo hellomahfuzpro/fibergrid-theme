@@ -274,8 +274,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- Header -->
 <?php
 $fg_sticky         = get_theme_mod( 'fg_header_sticky', true );
-$fg_portal_text    = get_theme_mod( 'fg_header_client_portal_text', 'Customer Portal' );
-$fg_portal_url     = get_theme_mod( 'fg_header_client_portal_url', home_url( '/contact/#portal' ) );
 $fg_quote_text     = get_theme_mod( 'fg_header_quote_btn_text', 'Request Quote' );
 $fg_quote_url      = get_theme_mod( 'fg_header_quote_btn_url', home_url( '/contact/' ) );
 
@@ -303,10 +301,8 @@ $fg_header_logo_h   = get_theme_mod( 'fg_header_logo_height', '48' );
             <a class="font-label-ui text-label-ui text-on-surface hover:text-primary transition-colors font-medium <?php echo is_page( 'about-us' ) ? 'text-primary font-bold border-b-2 border-primary pb-0.5' : ''; ?>" href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a>
             <a class="font-label-ui text-label-ui text-on-surface hover:text-primary transition-colors font-medium <?php echo ( is_page( 'blog' ) || is_home() || is_singular( 'post' ) ) ? 'text-primary font-bold border-b-2 border-primary pb-0.5' : ''; ?>" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
             <a class="font-label-ui text-label-ui text-on-surface hover:text-primary transition-colors font-medium <?php echo is_page( 'contact' ) ? 'text-primary font-bold border-b-2 border-primary pb-0.5' : ''; ?>" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
-            <a class="font-label-ui text-label-ui text-deep-navy hover:text-primary transition-colors font-semibold" href="<?php echo esc_url( $fg_portal_url ); ?>"><?php echo esc_html( $fg_portal_text ); ?></a>
         </nav>
         <div class="flex items-center gap-3 sm:gap-4">
-            <a class="fg-customer-portal-btn hidden sm:inline-flex items-center justify-center font-label-ui text-label-ui font-medium text-deep-navy hover:text-primary transition-colors px-2 py-1" href="<?php echo esc_url( $fg_portal_url ); ?>"><?php echo esc_html( $fg_portal_text ); ?></a>
             <a class="fg-quote-btn inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-semibold shadow-md hover:bg-primary transition-all" href="<?php echo esc_url( $fg_quote_url ); ?>"><?php echo esc_html( $fg_quote_text ); ?></a>
             
             <!-- Mobile Menu Toggle Button -->
@@ -324,7 +320,6 @@ $fg_header_logo_h   = get_theme_mod( 'fg_header_logo_height', '48' );
         <a class="block font-label-ui text-base font-semibold text-on-surface hover:text-primary py-2" href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a>
         <a class="block font-label-ui text-base font-semibold text-on-surface hover:text-primary py-2" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
         <a class="block font-label-ui text-base font-semibold text-on-surface hover:text-primary py-2" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
-        <a class="block font-label-ui text-base font-semibold text-deep-navy hover:text-primary py-2" href="<?php echo esc_url( $fg_portal_url ); ?>"><?php echo esc_html( $fg_portal_text ); ?></a>
         <div class="pt-3 border-t border-surface-container-high flex flex-col gap-2">
             <a class="text-center py-2.5 font-label-ui text-sm font-semibold text-white bg-optical-blue rounded-lg" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request Quote</a>
         </div>

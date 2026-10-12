@@ -230,11 +230,11 @@ class FiberGrid_Widget_ContactSec3 extends FiberGrid_Base_Widget {
                             </div>
                             <div class="p-3 rounded-lg border border-surface-container-high/60 flex items-center justify-between">
                                 <span class="font-semibold text-on-surface flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-sm text-optical-blue">login</span>
-                                    Existing Client Queue:
+                                    <span class="material-symbols-outlined text-sm text-optical-blue">dns</span>
+                                    Facility &amp; Rack Visit:
                                 </span>
-                                <a class="font-label-ui text-xs font-bold text-optical-blue hover:underline" href="<?php echo esc_url( get_theme_mod( 'fg_header_client_portal_url', home_url( '/contact/#portal' ) ) ); ?>">
-                                    Customer Portal →
+                                <a class="font-label-ui text-xs font-bold text-optical-blue hover:underline" href="#contactForm">
+                                    Schedule Visit →
                                 </a>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget: Contact - Section 2 (Inquiry Dispatch Form & Customer Portal Card)
+ * Widget: Contact - Section 2 (Inquiry Dispatch Form & Direct Engineering Dispatch Card)
  *
  * @package FiberGrid
  */
@@ -62,27 +62,27 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
         $this->add_control(
             'portal_card_title',
             array(
-                'label'   => esc_html__( 'Portal Card Title', 'fibergrid' ),
+                'label'   => esc_html__( 'Support Card Title', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Customer Portal',
+                'default' => 'Direct Engineering Dispatch',
             )
         );
 
         $this->add_control(
             'portal_card_text',
             array(
-                'label'   => esc_html__( 'Portal Card Text', 'fibergrid' ),
+                'label'   => esc_html__( 'Support Card Text', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => 'If you are an active FiberGrid subscriber or enterprise colocation client, you can submit and track priority emergency support tickets through our customer panel.',
+                'default' => 'Our network operations center monitors BGP routes, optical wavelengths, and physical infrastructure around the clock. Inquiries submitted via this form are routed directly to on-call network engineers.',
             )
         );
 
         $this->add_control(
             'portal_card_link',
             array(
-                'label'   => esc_html__( 'Portal Card Link', 'fibergrid' ),
+                'label'   => esc_html__( 'Support Card Link', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::URL,
-                'default' => array( 'url' => home_url( '/contact/#portal' ) ),
+                'default' => array( 'url' => '#contactForm' ),
             )
         );
 
@@ -144,9 +144,9 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
         $eyebrow     = ! empty( $settings['eyebrow'] ) ? $settings['eyebrow'] : 'Direct Engineering Dispatch';
         $title       = ! empty( $settings['title'] ) ? $settings['title'] : 'Contact Us';
         $desc        = ! empty( $settings['description'] ) ? $settings['description'] : 'Technical support is always free of charge. Our primary goal is to get your IP transit, colocation, or optical cross-connect active quickly with zero friction, keeping your network operating at peak performance 24/7/365.';
-        $p_title     = ! empty( $settings['portal_card_title'] ) ? $settings['portal_card_title'] : 'Customer Portal';
-        $p_text      = ! empty( $settings['portal_card_text'] ) ? $settings['portal_card_text'] : 'If you are an active FiberGrid subscriber or enterprise colocation client, you can submit and track priority emergency support tickets through our customer panel.';
-        $p_url       = ! empty( $settings['portal_card_link']['url'] ) ? $settings['portal_card_link']['url'] : home_url( '/contact/#portal' );
+        $p_title     = ! empty( $settings['portal_card_title'] ) ? $settings['portal_card_title'] : 'Direct Engineering Dispatch';
+        $p_text      = ! empty( $settings['portal_card_text'] ) ? $settings['portal_card_text'] : 'Our network operations center monitors BGP routes, optical wavelengths, and physical infrastructure around the clock. Inquiries submitted via this form are routed directly to on-call network engineers.';
+        $p_url       = ! empty( $settings['portal_card_link']['url'] ) ? $settings['portal_card_link']['url'] : '#contactForm';
 
         $form_eyebrow = ! empty( $settings['form_eyebrow'] ) ? $settings['form_eyebrow'] : 'Inquiry Dispatch';
         $form_title   = ! empty( $settings['form_title'] ) ? $settings['form_title'] : 'Send a Message or Request Engineering Quote';
@@ -155,7 +155,7 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
         <section class="w-full py-12 lg:py-16 <?php echo esc_attr( $settings['custom_css_classes'] ?? '' ); ?>">
             <div class="max-w-[1320px] mx-auto px-margin-mobile lg:px-margin-desktop">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                    <!-- Left Column: Context, Value Proposition & Customer Portal Hub -->
+                    <!-- Left Column: Context, Value Proposition & NOC Support Card -->
                     <div class="lg:col-span-5 flex flex-col gap-8">
                         <div class="flex flex-col gap-4">
                             <div class="inline-flex items-center gap-1.5 font-label-mono text-label-mono text-optical-blue tracking-wide uppercase font-semibold">
@@ -201,18 +201,18 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
                             </div>
                         </div>
 
-                        <!-- Customer Portal Card -->
-                        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col gap-4" id="portal">
+                        <!-- Direct Engineering Dispatch Card -->
+                        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col gap-4">
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-xl bg-surface-container-high text-optical-blue flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+                                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
                                 </div>
                                 <div>
                                     <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
                                         <?php echo esc_html( $p_title ); ?>
                                     </h3>
                                     <span class="font-label-mono text-xs text-status-healthy font-semibold flex items-center gap-1">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span> Priority Queue Active
+                                        <span class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span> 24/7/365 NOC On-Call
                                     </span>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
                                 <?php echo esc_html( $p_text ); ?>
                             </p>
                             <a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface-container text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container-high transition-colors self-start" href="<?php echo esc_url( $p_url ); ?>">
-                                <span>Go to Customer Portal</span>
+                                <span>Submit Direct Dispatch</span>
                                 <span class="material-symbols-outlined text-base">arrow_forward</span>
                             </a>
                         </div>

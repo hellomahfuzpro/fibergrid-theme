@@ -89,13 +89,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </nav>
             </div>
             <div class="lg:col-span-2 flex flex-col gap-3">
-                <h4 class="text-sm font-bold text-[#0b1c30]">Company &amp; Access</h4>
+                <h4 class="text-sm font-bold text-[#0b1c30]">Company</h4>
                 <nav class="flex flex-col gap-2.5 text-sm text-on-surface-variant">
                     <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">Company Overview</a>
                     <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/about-us/#presence' ) ); ?>">Data Centers &amp; PoPs</a>
                     <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Engineering Blog</a>
                     <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Engineering</a>
-                    <a class="hover:text-primary transition-colors font-semibold text-deep-navy" href="<?php echo esc_url( get_theme_mod( 'fg_header_client_portal_url', home_url( '/contact/#portal' ) ) ); ?>">Customer Portal</a>
                 </nav>
             </div>
         </div>

@@ -300,7 +300,7 @@ function fg_render_form_settings_page() {
                         <span>🎨</span> <?php esc_html_e( 'Theme Customizer', 'fibergrid' ); ?>
                     </h3>
                     <p style="color:#64748B;font-size:12px;line-height:1.5;">
-                        <?php esc_html_e( 'Header logo, navigation links, colors, typography, and Customer Portal URL can be styled live.', 'fibergrid' ); ?>
+                        <?php esc_html_e( 'Header logo, navigation links, colors, typography, and layout settings can be styled live.', 'fibergrid' ); ?>
                     </p>
                     <a href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" class="button button-secondary" style="width:100%;text-align:center;font-weight:600;">
                         <?php esc_html_e( 'Open Customizer →', 'fibergrid' ); ?>

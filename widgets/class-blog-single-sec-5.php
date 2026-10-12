@@ -60,6 +60,50 @@ class FiberGrid_Widget_BlogSingleSec5 extends FiberGrid_Base_Widget {
         );
 
         $this->add_control(
+            'btn1_text',
+            array(
+                'label'   => esc_html__( 'Primary Button Text', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Request Peering Spec', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn1_url',
+            array(
+                'label'   => esc_html__( 'Primary Button Link', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'default' => array(
+                    'url'         => home_url( '/contact/' ),
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ),
+            )
+        );
+
+        $this->add_control(
+            'btn2_text',
+            array(
+                'label'   => esc_html__( 'Secondary Button Text', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Contact NOC Team', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn2_url',
+            array(
+                'label'   => esc_html__( 'Secondary Button Link', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'default' => array(
+                    'url'         => home_url( '/contact/' ),
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ),
+            )
+        );
+
+        $this->add_control(
             'custom_css_classes',
             array(
                 'label'       => esc_html__( 'Extra CSS Classes', 'fibergrid' ),
@@ -80,21 +124,32 @@ class FiberGrid_Widget_BlogSingleSec5 extends FiberGrid_Base_Widget {
         $eyebrow = ! empty( $settings['eyebrow'] ) ? $settings['eyebrow'] : 'FiberGrid Optical Connectivity';
         $title = ! empty( $settings['section_title'] ) ? $settings['section_title'] : 'Ready to deploy low-latency infrastructure on our Tier-1 optical backbone?';
         $desc = ! empty( $settings['section_description'] ) ? $settings['section_description'] : 'Connect directly with our network engineering team to test route pings, request custom 100G/400G cross-connect specs, or inspect regional peering communities.';
+        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : 'Request Peering Spec';
+        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : home_url( '/contact/' );
+        $btn2_text = ! empty( $settings['btn2_text'] ) ? $settings['btn2_text'] : 'Contact NOC Team';
+        $btn2_url  = ! empty( $settings['btn2_url']['url'] ) ? $settings['btn2_url']['url'] : home_url( '/contact/' );
         ?>
 
         <section class="w-full bg-midnight-bg text-white py-16 relative overflow-hidden">
-<!-- Ambient subtle background grid -->
-<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#0066FF_1px,transparent_1px)] [background-size:24px_24px]"></div>
-<div class="w-full px-margin-mobile lg:px-margin-desktop max-w-[1240px] mx-auto relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-<div class="max-w-2xl flex flex-col gap-3">
-<div class="inline-flex items-center gap-2 text-cyan-pulse font-label-mono text-label-mono uppercase tracking-wider"><?php echo esc_html( $eyebrow ); ?></div>
-<h2 class="font-headline-xl text-headline-xl text-white font-extrabold tracking-tight">
-          <?php echo wp_kses_post( $title ); ?>
-        </h2>
-<p class="font-body-md text-body-md text-slate-300"><?php echo esc_html( $desc ); ?></p>
-</div>
-<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
-<a class="px-6 py-3.5 rounded-lg bg-optical-blue hover:bg-primary font-label-ui text-label-ui font-semibold text-white text-center shadow-lg transition-all transform hover:-translate-y-0.5" href="
+            <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#0066FF_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            <div class="w-full px-margin-mobile lg:px-margin-desktop max-w-[1240px] mx-auto relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div class="max-w-2xl flex flex-col gap-3">
+                    <div class="inline-flex items-center gap-2 text-cyan-pulse font-label-mono text-label-mono uppercase tracking-wider"><?php echo esc_html( $eyebrow ); ?></div>
+                    <h2 class="font-headline-xl text-headline-xl text-white font-extrabold tracking-tight">
+                        <?php echo wp_kses_post( $title ); ?>
+                    </h2>
+                    <p class="font-body-md text-body-md text-slate-300"><?php echo esc_html( $desc ); ?></p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
+                    <a class="px-6 py-3.5 rounded-lg bg-optical-blue hover:bg-primary font-label-ui text-label-ui font-semibold text-white text-center shadow-lg transition-all transform hover:-translate-y-0.5" href="<?php echo esc_url( $btn1_url ); ?>">
+                        <?php echo esc_html( $btn1_text ); ?>
+                    </a>
+                    <a class="px-6 py-3.5 rounded-lg border border-white/30 hover:border-white text-white font-label-ui text-label-ui font-semibold text-center hover:bg-white/10 transition-all" href="<?php echo esc_url( $btn2_url ); ?>">
+                        <?php echo esc_html( $btn2_text ); ?>
+                    </a>
+                </div>
+            </div>
+        </section>
         <?php
     }
 }

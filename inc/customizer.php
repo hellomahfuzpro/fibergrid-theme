@@ -484,41 +484,6 @@ add_action( 'customize_register', function( $wp_customize ) {
         )
     );
 
-    // Customer Portal Text
-    $wp_customize->add_setting(
-        'fg_header_client_portal_text',
-        array(
-            'default'           => 'Customer Portal',
-            'transport'         => 'postMessage',
-            'sanitize_callback' => 'sanitize_text_field',
-        )
-    );
-    $wp_customize->add_control(
-        'fg_header_client_portal_text',
-        array(
-            'label'   => esc_html__( 'Customer Portal Link Text', 'fibergrid' ),
-            'section' => 'fg_header_section',
-            'type'    => 'text',
-        )
-    );
-
-    // Customer Portal URL
-    $wp_customize->add_setting(
-        'fg_header_client_portal_url',
-        array(
-            'default'           => home_url( '/contact/#portal' ),
-            'transport'         => 'refresh',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-    $wp_customize->add_control(
-        'fg_header_client_portal_url',
-        array(
-            'label'   => esc_html__( 'Customer Portal Link URL', 'fibergrid' ),
-            'section' => 'fg_header_section',
-            'type'    => 'url',
-        )
-    );
 
     // CTA Button Text
     $wp_customize->add_setting(
@@ -668,24 +633,6 @@ add_action( 'customize_register', function( $wp_customize ) {
             'label'   => esc_html__( 'Primary Facility Address', 'fibergrid' ),
             'section' => 'fg_contact_section',
             'type'    => 'text',
-        )
-    );
-
-    // Customer Portal / Ticket Queue URL
-    $wp_customize->add_setting(
-        'fg_dispatch_portal_url',
-        array(
-            'default'           => home_url( '/contact/#portal' ),
-            'transport'         => 'postMessage',
-            'sanitize_callback' => 'esc_url_raw',
-        )
-    );
-    $wp_customize->add_control(
-        'fg_dispatch_portal_url',
-        array(
-            'label'   => esc_html__( 'Customer Portal / Ticket Queue URL', 'fibergrid' ),
-            'section' => 'fg_contact_section',
-            'type'    => 'url',
         )
     );
 
