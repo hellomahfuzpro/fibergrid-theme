@@ -101,9 +101,9 @@ function fg_handle_test_email() {
         $sent = wp_mail( $target, $subject, $body, $headers );
 
         if ( $sent ) {
-            add_settings_error( 'fg_settings_notices', 'test_sent', sprintf( __( 'Test email sent successfully to %s. Please check your inbox (and spam folder).', 'fibergrid' ), esc_html( $target ) ), 'success' );
+            add_settings_error( 'general', 'test_sent', sprintf( __( 'Test email sent successfully to %s. Please check your inbox (and spam folder).', 'fibergrid' ), esc_html( $target ) ), 'success' );
         } else {
-            add_settings_error( 'fg_settings_notices', 'test_failed', __( 'WordPress wp_mail() returned false. Please verify your SMTP settings (WP Mail SMTP plugin).', 'fibergrid' ), 'error' );
+            add_settings_error( 'general', 'test_failed', __( 'WordPress wp_mail() returned false. Please verify your SMTP settings (WP Mail SMTP plugin).', 'fibergrid' ), 'error' );
         }
     }
 }
@@ -130,7 +130,7 @@ function fg_render_form_settings_page() {
             <?php esc_html_e( 'Configure where incoming website inquiries (Contact, IP Transit, Colocation tours) are sent via email, sender credentials, and visitor confirmations.', 'fibergrid' ); ?>
         </p>
 
-        <?php settings_errors( 'fg_settings_notices' ); ?>
+        <?php settings_errors(); ?>
 
         <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start;">
             <!-- Left Column: Settings Form -->
