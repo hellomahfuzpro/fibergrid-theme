@@ -64,8 +64,7 @@ class FiberGrid_Widget_TransitSec10 extends FiberGrid_Base_Widget {
             array(
                 'label'   => esc_html__( 'Primary Button Text', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( '">
-          Request Custom Proposal', 'fibergrid' ),
+                'default' => esc_html__( 'Request Custom Proposal', 'fibergrid' ),
             )
         );
 
@@ -75,7 +74,7 @@ class FiberGrid_Widget_TransitSec10 extends FiberGrid_Base_Widget {
                 'label'   => esc_html__( 'Primary Button Link', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::URL,
                 'default' => array(
-                    'url'         => '<?php echo esc_url( home_url( ',
+                    'url'         => home_url( '/contact/' ),
                     'is_external' => false,
                     'nofollow'    => false,
                 ),
@@ -125,9 +124,8 @@ class FiberGrid_Widget_TransitSec10 extends FiberGrid_Base_Widget {
         $eyebrow = ! empty( $settings['eyebrow'] ) ? $settings['eyebrow'] : 'Ready to Upgrade Your Upstream?';
         $title = ! empty( $settings['section_title'] ) ? $settings['section_title'] : 'Connect Your Autonomous System Today.';
         $desc = ! empty( $settings['section_description'] ) ? $settings['section_description'] : 'Contact our network architecture sales desk for custom port cross-connects, committed information rates (CIR), and multi-region testing.';
-        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : '">
-          Request Custom Proposal';
-        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : '<?php echo esc_url( home_url( ';
+        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : 'Request Custom Proposal';
+        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : home_url( '/contact/' );
         $btn2_text = ! empty( $settings['btn2_text'] ) ? $settings['btn2_text'] : 'Run BGP Diagnostic';
         $btn2_url  = ! empty( $settings['btn2_url']['url'] ) ? $settings['btn2_url']['url'] : '#looking-glass';
         ?>
@@ -140,11 +138,12 @@ class FiberGrid_Widget_TransitSec10 extends FiberGrid_Base_Widget {
 <p class="font-body-md text-body-md text-surface-dim max-w-xl mt-2"><?php echo esc_html( $desc ); ?></p>
 </div>
 <div class="flex flex-wrap items-center gap-4">
-<a class="px-8 py-4 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-bold shadow-lg hover:bg-primary transition-all" href="<?php echo esc_url( home_url( "/contact/" ) ); ?><?php echo esc_html( $btn1_text ); ?>
-        </a>
+<a class="px-8 py-4 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-bold shadow-lg hover:bg-primary transition-all" href="<?php echo esc_url( $btn1_url ); ?>">
+  <?php echo esc_html( $btn1_text ); ?>
+</a>
 <a class="px-8 py-4 rounded-lg bg-slate-surface text-on-primary font-label-ui text-label-ui font-semibold hover:bg-slate-surface/80 transition-all" href="<?php echo esc_url( $btn2_url ); ?>">
-          <?php echo esc_html( $btn2_text ); ?>
-        </a>
+  <?php echo esc_html( $btn2_text ); ?>
+</a>
 </div>
 </div>
 </section>

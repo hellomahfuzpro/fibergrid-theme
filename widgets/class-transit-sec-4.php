@@ -62,20 +62,19 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
         $this->add_control(
             'btn1_text',
             array(
-                'label'   => esc_html__( 'Primary Button Text', 'fibergrid' ),
+                'label'   => esc_html__( 'Tier 1 Button Text', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( '">
-              Request 1G Port Quote', 'fibergrid' ),
+                'default' => esc_html__( 'Request 1G Port Quote', 'fibergrid' ),
             )
         );
 
         $this->add_control(
             'btn1_url',
             array(
-                'label'   => esc_html__( 'Primary Button Link', 'fibergrid' ),
+                'label'   => esc_html__( 'Tier 1 Button Link', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::URL,
                 'default' => array(
-                    'url'         => '<?php echo esc_url( home_url( ',
+                    'url'         => home_url( '/contact/' ),
                     'is_external' => false,
                     'nofollow'    => false,
                 ),
@@ -85,20 +84,41 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
         $this->add_control(
             'btn2_text',
             array(
-                'label'   => esc_html__( 'Secondary Button Text', 'fibergrid' ),
+                'label'   => esc_html__( 'Tier 2 Button Text', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( '">
-              Deploy 10G Port', 'fibergrid' ),
+                'default' => esc_html__( 'Deploy 10G Port', 'fibergrid' ),
             )
         );
 
         $this->add_control(
             'btn2_url',
             array(
-                'label'   => esc_html__( 'Secondary Button Link', 'fibergrid' ),
+                'label'   => esc_html__( 'Tier 2 Button Link', 'fibergrid' ),
                 'type'    => \Elementor\Controls_Manager::URL,
                 'default' => array(
-                    'url'         => '<?php echo esc_url( home_url( ',
+                    'url'         => home_url( '/contact/' ),
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ),
+            )
+        );
+
+        $this->add_control(
+            'btn3_text',
+            array(
+                'label'   => esc_html__( 'Tier 3 Button Text', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Consult Network Architect', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn3_url',
+            array(
+                'label'   => esc_html__( 'Tier 3 Button Link', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'default' => array(
+                    'url'         => home_url( '/contact/' ),
                     'is_external' => false,
                     'nofollow'    => false,
                 ),
@@ -126,12 +146,12 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
         $eyebrow = ! empty( $settings['eyebrow'] ) ? $settings['eyebrow'] : 'Commercial Bandwidth Tiers';
         $title = ! empty( $settings['section_title'] ) ? $settings['section_title'] : 'Transparent IP Transit Pricing';
         $desc = ! empty( $settings['section_description'] ) ? $settings['section_description'] : 'Deploy high-speed autonomous BGP transit with direct cross-connects at world-class carrier-neutral data centers.';
-        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : '">
-              Request 1G Port Quote';
-        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : '<?php echo esc_url( home_url( ';
-        $btn2_text = ! empty( $settings['btn2_text'] ) ? $settings['btn2_text'] : '">
-              Deploy 10G Port';
-        $btn2_url  = ! empty( $settings['btn2_url']['url'] ) ? $settings['btn2_url']['url'] : '<?php echo esc_url( home_url( ';
+        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : 'Request 1G Port Quote';
+        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : home_url( '/contact/' );
+        $btn2_text = ! empty( $settings['btn2_text'] ) ? $settings['btn2_text'] : 'Deploy 10G Port';
+        $btn2_url  = ! empty( $settings['btn2_url']['url'] ) ? $settings['btn2_url']['url'] : home_url( '/contact/' );
+        $btn3_text = ! empty( $settings['btn3_text'] ) ? $settings['btn3_text'] : 'Consult Network Architect';
+        $btn3_url  = ! empty( $settings['btn3_url']['url'] ) ? $settings['btn3_url']['url'] : home_url( '/contact/' );
         ?>
 
         <section class="w-full bg-surface-ice py-20 px-margin-mobile lg:px-margin-desktop" id="pricing-matrix">
@@ -183,8 +203,9 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
 </ul>
 </div>
 <div class="mt-8 pt-6">
-<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-surface-ice text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container transition-all" href="<?php echo esc_url( home_url( "/contact/" ) ); ?><?php echo esc_html( $btn1_text ); ?>
-            </a>
+<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-surface-ice text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container transition-all" href="<?php echo esc_url( $btn1_url ); ?>">
+  <?php echo esc_html( $btn1_text ); ?>
+</a>
 </div>
 </div>
 <!-- Tier 2: 10 Gigabit (Highlighted Featured Tier) -->
@@ -230,8 +251,9 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
 </ul>
 </div>
 <div class="mt-8 pt-6">
-<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-semibold shadow-md hover:bg-primary transition-all" href="<?php echo esc_url( home_url( "/contact/" ) ); ?><?php echo esc_html( $btn2_text ); ?>
-            </a>
+<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-semibold shadow-md hover:bg-primary transition-all" href="<?php echo esc_url( $btn2_url ); ?>">
+  <?php echo esc_html( $btn2_text ); ?>
+</a>
 </div>
 </div>
 <!-- Tier 3: 100 Gigabit Hyperscale -->
@@ -274,9 +296,9 @@ class FiberGrid_Widget_TransitSec4 extends FiberGrid_Base_Widget {
 </ul>
 </div>
 <div class="mt-8 pt-6">
-<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-surface-ice text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container transition-all" href="<?php echo esc_url( home_url( "/contact/" ) ); ?>">
-              Consult Network Architect
-            </a>
+<a class="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-lg bg-surface-ice text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container transition-all" href="<?php echo esc_url( $btn3_url ); ?>">
+  <?php echo esc_html( $btn3_text ); ?>
+</a>
 </div>
 </div>
 </div>

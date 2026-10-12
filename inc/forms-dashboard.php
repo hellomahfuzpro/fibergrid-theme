@@ -10,17 +10,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register Admin Menu
+ * Register Admin Menu & Submenus
  */
 add_action( 'admin_menu', function() {
+    // Top-Level FiberGrid Menu
     add_menu_page(
-        __( 'FiberGrid Leads', 'fibergrid' ),
-        __( 'FiberGrid Leads', 'fibergrid' ),
+        __( 'FiberGrid', 'fibergrid' ),
+        __( 'FiberGrid', 'fibergrid' ),
         'manage_options',
         'fibergrid-leads',
         'fg_render_leads_dashboard',
         'dashicons-networking',
         25
+    );
+
+    // Inquiries & Leads Submenu
+    add_submenu_page(
+        'fibergrid-leads',
+        __( 'Inquiries & Leads', 'fibergrid' ),
+        __( 'Inquiries & Leads', 'fibergrid' ),
+        'manage_options',
+        'fibergrid-leads',
+        'fg_render_leads_dashboard'
+    );
+
+    // Theme & Form Email Settings Submenu
+    add_submenu_page(
+        'fibergrid-leads',
+        __( 'Form & Email Settings', 'fibergrid' ),
+        __( 'Form & Email Settings', 'fibergrid' ),
+        'manage_options',
+        'fibergrid-form-settings',
+        'fg_render_form_settings_page'
+    );
+
+    // Also register under Appearance for quick discovery
+    add_theme_page(
+        __( 'FiberGrid Settings', 'fibergrid' ),
+        __( 'FiberGrid Settings', 'fibergrid' ),
+        'manage_options',
+        'fibergrid-form-settings',
+        'fg_render_form_settings_page'
     );
 } );
 

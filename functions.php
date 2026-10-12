@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'FIBERGRID_VERSION', '2.0.0' );
+define( 'FIBERGRID_VERSION', '2.0.1' );
 define( 'FG_DIR', get_template_directory() );
 define( 'FG_URI', get_template_directory_uri() );
 
@@ -81,6 +81,7 @@ require_once get_template_directory() . '/inc/updater.php';
 require_once get_template_directory() . '/inc/elementor.php';
 require_once get_template_directory() . '/inc/forms-handler.php';
 require_once get_template_directory() . '/inc/forms-dashboard.php';
+require_once get_template_directory() . '/inc/forms-settings.php';
 require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/page-seeder.php';
 
