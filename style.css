@@ -1,62 +1,290 @@
 /*
 Theme Name: FiberGrid
-Theme URI: https://github.com/hellomahfuzpro/fibergrid-theme
-Description: High-performance, customizable Elementor WordPress theme engineered for enterprise optical fiber telecom, BGP transit, carrier-neutral colocation, and virtual data centers. Includes native form submissions hub, live telemetry styles, and global Customizer controls.
-Version: 1.0.0
-Author: Mahfuz
-Author URI: https://github.com/hellomahfuzpro
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: fibergrid
-Domain Path: /languages
+Theme URI: https://fibergrid.co.za/
+Author: FiberGrid Engineering
+Author URI: https://fibergrid.co.za/
+Description: High-throughput global optical telecommunications & data center infrastructure theme.
+Version: 2.0.0
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.6
 Requires PHP: 7.4
+Text Domain: fibergrid
 */
 
-/* 
- * FiberGrid Core Theme Base
- * All dynamic widget styles are loaded via assets/css/tokens.css and assets/css/widgets.css
- */
+/* ==========================================================================
+   STITCH DESIGN SYSTEM: MASTER TYPOGRAPHY & FONT SPECIFICATION
+   ========================================================================== */
+
+/* 1. Global Base Typography */
+html,
+body,
+body.elementor-page,
+.elementor-kit-5,
+.elementor-kit-5 body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 24px !important;
+    font-weight: 400 !important;
+    color: #0b1c30;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Global Headings (Stitch: Plus Jakarta Sans) */
+h1, h2, h3, h4, h5, h6,
+.elementor-kit-5 h1, .elementor-kit-5 h2, .elementor-kit-5 h3,
+.elementor-kit-5 h4, .elementor-kit-5 h5, .elementor-kit-5 h6,
+.elementor-widget-container h1, .elementor-widget-container h2,
+.elementor-widget-container h3, .elementor-widget-container h4,
+.elementor-widget-container h5, .elementor-widget-container h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Default Heading Scale */
+h1 {
+    font-size: 44px;
+    line-height: 52px;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+@media (max-width: 768px) {
+    h2 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+/* Paragraphs & General Text */
+p, li, input, select, textarea, button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* 3. Stitch Named Typography Token Classes */
+
+/* Display Hero (Desktop 56px, Mobile 36px) */
+.font-display-hero,
+[class*="font-display-hero"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 56px !important;
+    line-height: 64px !important;
+    letter-spacing: -0.03em !important;
+    font-weight: 800 !important;
+}
+@media (max-width: 768px) {
+    .font-display-hero {
+        font-size: 36px !important;
+        line-height: 44px !important;
+        letter-spacing: -0.02em !important;
+    }
+}
+.font-display-hero-mobile {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 36px !important;
+    line-height: 44px !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 800 !important;
+}
+
+/* Headline XL (Desktop 40px, Mobile 28px) */
+.font-headline-xl,
+[class*="font-headline-xl"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 40px !important;
+    line-height: 48px !important;
+    letter-spacing: -0.025em !important;
+    font-weight: 700 !important;
+}
+@media (max-width: 768px) {
+    .font-headline-xl {
+        font-size: 28px !important;
+        line-height: 36px !important;
+        letter-spacing: -0.02em !important;
+    }
+}
+.font-headline-xl-mobile {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 28px !important;
+    line-height: 36px !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+}
+
+/* Headline LG (32px / 40px) */
+.font-headline-lg,
+[class*="font-headline-lg"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 32px !important;
+    line-height: 40px !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+}
+
+/* Headline MD (24px / 32px) */
+.font-headline-md,
+[class*="font-headline-md"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 600 !important;
+}
+
+/* Headline SM (20px / 28px) */
+.font-headline-sm,
+[class*="font-headline-sm"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 600 !important;
+}
+
+/* Body LG (18px / 28px) */
+.font-body-lg,
+[class*="font-body-lg"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+    font-weight: 400 !important;
+}
+
+/* Body MD (15px / 24px) */
+.font-body-md,
+[class*="font-body-md"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 24px !important;
+    font-weight: 400 !important;
+}
+
+/* Body SM (13px / 20px) */
+.font-body-sm,
+[class*="font-body-sm"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 20px !important;
+    font-weight: 400 !important;
+}
+
+/* Label UI (13px / 18px, SemiBold) */
+.font-label-ui,
+[class*="font-label-ui"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.01em !important;
+    font-weight: 600 !important;
+}
+
+/* Hardware Telemetry & Numeric Metrics (Space Mono) */
+.font-tech-metric-lg,
+[class*="font-tech-metric-lg"] {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 32px !important;
+    line-height: 36px !important;
+    letter-spacing: -0.03em !important;
+    font-weight: 700 !important;
+}
+
+.font-tech-metric-md,
+[class*="font-tech-metric-md"] {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+}
+
+.font-label-mono,
+[class*="font-label-mono"],
+.font-mono {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    letter-spacing: 0.06em !important;
+    font-weight: 500 !important;
+}
+
+/* Core resets & variables */
+:root {
+    --fg-primary: #0066FF;
+    --fg-navy: #0C2340;
+    --fg-cyan: #06B6D4;
+}
+
 html {
-    box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--fg-font-body, 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-    font-size: var(--fg-font-size-base, 16px);
-    line-height: var(--fg-line-height-body, 1.6);
-    color: var(--fg-color-text-main, #0b1c30);
-    background-color: var(--fg-color-bg, #f8f9ff);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overscroll-behavior: none;
 }
 
-/* Ensure Elementor full-width containers render seamlessly */
-.elementor-section.elementor-section-boxed > .elementor-container {
-    max-width: var(--fg-container-max, 1320px);
+::-webkit-scrollbar {
+    display: none;
 }
 
-.fg-container {
-    width: 100%;
-    max-width: var(--fg-container-max, 1320px);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
+/* ==========================================================================
+   FAQ SECTION TYPOGRAPHY OVERRIDES
+   ========================================================================== */
+.fg-faq-question,
+#faq h3,
+.fg-faq-item h3,
+[data-faq-trigger] h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 !important;
 }
 
-@media (max-width: 768px) {
-    .fg-container {
-        padding-left: 16px;
-        padding-right: 16px;
+@media (min-width: 640px) {
+    .fg-faq-question,
+    #faq h3,
+    .fg-faq-item h3,
+    [data-faq-trigger] h3 {
+        font-size: 17px !important;
+        line-height: 25px !important;
     }
 }
+

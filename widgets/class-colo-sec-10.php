@@ -1,0 +1,161 @@
+<?php
+/**
+ * Widget: Colocation - Section 10
+ *
+ * @package FiberGrid
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+class FiberGrid_Widget_ColoSec10 extends FiberGrid_Base_Widget {
+
+    public function get_name() {
+        return 'fg_colo_sec_10';
+    }
+
+    public function get_title() {
+        return esc_html__( 'Colocation - Section 10', 'fibergrid' );
+    }
+
+    public function get_icon() {
+        return 'eicon-section';
+    }
+
+    protected function register_controls() {
+        $this->start_controls_section(
+            'section_content',
+            array(
+                'label' => esc_html__( 'Content Settings', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'eyebrow',
+            array(
+                'label'   => esc_html__( 'Eyebrow', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'LEGALLY BINDING SLA COMMITMENT', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'section_title',
+            array(
+                'label'   => esc_html__( 'Section Title', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                'rows'    => 2,
+                'default' => '100% Power &amp; Precision Cooling Availability',
+            )
+        );
+
+        $this->add_control(
+            'section_description',
+            array(
+                'label'   => esc_html__( 'Description', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__( 'Backed by financial penalty credits. If utility feeds deviate from ANSI/TIA-942 thermal or power tolerances, FiberGrid issues proactive account credits automatically.', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn1_text',
+            array(
+                'label'   => esc_html__( 'Primary Button Text', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Read Full SLA Terms', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn1_url',
+            array(
+                'label'   => esc_html__( 'Primary Button Link', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'default' => array(
+                    'url'         => '#',
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ),
+            )
+        );
+
+        $this->add_control(
+            'btn2_text',
+            array(
+                'label'   => esc_html__( 'Secondary Button Text', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( '">
+            Talk to Solutions Architect', 'fibergrid' ),
+            )
+        );
+
+        $this->add_control(
+            'btn2_url',
+            array(
+                'label'   => esc_html__( 'Secondary Button Link', 'fibergrid' ),
+                'type'    => \Elementor\Controls_Manager::URL,
+                'default' => array(
+                    'url'         => '<?php echo esc_url( home_url( ',
+                    'is_external' => false,
+                    'nofollow'    => false,
+                ),
+            )
+        );
+
+        $this->add_control(
+            'custom_css_classes',
+            array(
+                'label'       => esc_html__( 'Extra CSS Classes', 'fibergrid' ),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => '',
+                'placeholder' => 'custom-class',
+            )
+        );
+
+        $this->end_controls_section();
+
+        $this->add_style_controls();
+    }
+
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+        $theme_uri = get_template_directory_uri();
+        $eyebrow = ! empty( $settings['eyebrow'] ) ? $settings['eyebrow'] : 'LEGALLY BINDING SLA COMMITMENT';
+        $title = ! empty( $settings['section_title'] ) ? $settings['section_title'] : '100% Power &amp; Precision Cooling Availability';
+        $desc = ! empty( $settings['section_description'] ) ? $settings['section_description'] : 'Backed by financial penalty credits. If utility feeds deviate from ANSI/TIA-942 thermal or power tolerances, FiberGrid issues proactive account credits automatically.';
+        $btn1_text = ! empty( $settings['btn1_text'] ) ? $settings['btn1_text'] : 'Read Full SLA Terms';
+        $btn1_url  = ! empty( $settings['btn1_url']['url'] ) ? $settings['btn1_url']['url'] : '#';
+        $btn2_text = ! empty( $settings['btn2_text'] ) ? $settings['btn2_text'] : '">
+            Talk to Solutions Architect';
+        $btn2_url  = ! empty( $settings['btn2_url']['url'] ) ? $settings['btn2_url']['url'] : '<?php echo esc_url( home_url( ';
+        ?>
+
+        <section class="w-full bg-surface-container-lowest py-16 border-t border-grid-line/60">
+<div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="p-8 lg:p-12 rounded-3xl bg-surface-container flex flex-col lg:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-2xl bg-optical-blue text-on-primary flex items-center justify-center flex-shrink-0 shadow-lg">
+<span class="material-symbols-outlined text-[36px]">workspace_premium</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-2 text-status-healthy font-label-mono text-label-mono font-bold"><?php echo esc_html( $eyebrow ); ?></div>
+<h3 class="font-headline-md text-headline-md text-deep-navy font-bold"><?php echo wp_kses_post( $title ); ?></h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl"><?php echo esc_html( $desc ); ?></p>
+</div>
+</div>
+<div class="flex items-center gap-4 flex-shrink-0">
+<a class="px-5 py-3 rounded-lg bg-surface-container-lowest text-deep-navy font-label-ui text-label-ui font-semibold hover:bg-surface-container-high transition-colors shadow-sm" href="<?php echo esc_url( $btn1_url ); ?>">
+            <?php echo esc_html( $btn1_text ); ?>
+          </a>
+<a class="px-6 py-3 rounded-lg bg-optical-blue text-on-primary font-label-ui text-label-ui font-semibold hover:bg-primary transition-all shadow-md" href="<?php echo esc_url( home_url( "/contact/" ) ); ?><?php echo esc_html( $btn2_text ); ?>
+          </a>
+</div>
+</div>
+</div>
+</section>
+        
+        <?php
+    }
+}

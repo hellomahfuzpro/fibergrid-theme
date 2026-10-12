@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420" fill="none">
+  <defs>
+    <linearGradient id="boldBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#0042B3"/>
+    </linearGradient>
+
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+
+    <linearGradient id="alertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Digit "4": Ultra-Bold Weight 900 Optical Trace Geometry -->
+  <g transform="translate(40, 40)">
+    <!-- Main stem & crossbar with 38px thick stroke for font-weight 900 feel -->
+    <path d="M 105 30 L 25 180 H 122 M 122 30 V 250" stroke="url(#boldBlueGrad)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Network node terminals -->
+    <circle cx="105" cy="30" r="10" fill="#38BDF8"/>
+    <circle cx="25" cy="180" r="9" fill="#38BDF8"/>
+    <circle cx="122" cy="180" r="11" fill="#FFFFFF" stroke="#0066FF" stroke-width="5"/>
+    <circle cx="122" cy="250" r="10" fill="#0042B3"/>
+  </g>
+
+  <!-- Center Digit "0": Ultra-Bold Disconnected Optical Orbit -->
+  <g transform="translate(210, 40)">
+    <!-- Left continuous glowing half-loop of 0 -->
+    <path d="M 90 30 C 35 30 18 85 18 140 C 18 195 35 250 90 250" stroke="url(#cyanAccent)" stroke-width="38" stroke-linecap="round"/>
+    
+    <!-- Right side of 0 with physical disconnect severance gap -->
+    <path d="M 90 30 C 132 30 152 65 158 96" stroke="url(#boldBlueGrad)" stroke-width="38" stroke-linecap="round"/>
+    <path d="M 158 184 C 152 215 132 250 90 250" stroke="url(#boldBlueGrad)" stroke-width="38" stroke-linecap="round"/>
+
+    <!-- Disconnected Node Gap Beacon -->
+    <g transform="translate(162, 140)">
+      <circle cx="0" cy="0" r="20" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="2"/>
+      <circle cx="0" cy="0" r="8" fill="url(#alertGrad)"/>
+      <line x1="-9" y1="-9" x2="9" y2="9" stroke="#E11D48" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Center optical core search ring -->
+    <circle cx="90" cy="140" r="28" fill="none" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="4 5"/>
+    <circle cx="90" cy="140" r="6" fill="#64748B"/>
+  </g>
+
+  <!-- Right Digit "4": Ultra-Bold Weight 900 Optical Trace Geometry -->
+  <g transform="translate(400, 40)">
+    <path d="M 105 30 L 25 180 H 122 M 122 30 V 250" stroke="url(#boldBlueGrad)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="105" cy="30" r="10" fill="#38BDF8"/>
+    <circle cx="25" cy="180" r="9" fill="#38BDF8"/>
+    <circle cx="122" cy="180" r="11" fill="#FFFFFF" stroke="#0066FF" stroke-width="5"/>
+    <circle cx="122" cy="250" r="10" fill="#0042B3"/>
+  </g>
+
+  <!-- Route Severed Telemetry Badge -->
+  <g transform="translate(300, 340)">
+    <path d="M -180 0 H -80" stroke="#93C5FD" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 80 0 H 180" stroke="#CBD5E1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+    
+    <circle cx="-80" cy="0" r="6" fill="#0066FF"/>
+    <circle cx="80" cy="0" r="6" fill="#94A3B8"/>
+
+    <!-- Status pill badge -->
+    <rect x="-95" y="-20" width="190" height="40" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <circle cx="-70" cy="0" r="5" fill="#E11D48"/>
+    <text x="-54" y="5" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="12" fill="#0F172A" letter-spacing="1.2">ROUTE SEVERED</text>
+    <path d="M 66 -4 L 74 4 M 74 -4 L 66 4" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Diagnostic telemetry subtext -->
+  <g transform="translate(300, 395)">
+    <text x="0" y="0" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="#64748B" letter-spacing="1.5">
+      ERR_404 <tspan fill="#0066FF">•</tspan> NEXT_HOP_UNREACHABLE <tspan fill="#0066FF">•</tspan> NULL0
+    </text>
+  </g>
+</svg>

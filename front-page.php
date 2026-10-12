@@ -1,16 +1,17 @@
 <?php
 /**
- * FiberGrid — Front Page Template
+ * Generic page template
  *
  * @package FiberGrid
  */
 
-get_header(); ?>
+get_header();
 
-<?php while ( have_posts() ) : the_post(); ?>
-    <div class="fg-front-page-content">
-        <?php the_content(); ?>
-    </div>
-<?php endwhile; ?>
+if ( have_posts() ) {
+    while ( have_posts() ) {
+        the_post();
+        the_content();
+    }
+}
 
-<?php get_footer(); ?>
+get_footer();

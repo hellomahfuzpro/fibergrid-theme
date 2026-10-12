@@ -1,8 +1,6 @@
 <?php
 /**
- * FiberGrid — One-Click Programmatic Page Seeder
- *
- * Seeds all 9 Stitch screens into modern Elementor Flexbox Containers.
+ * Programmatic Page Seeder for Elementor Containers
  *
  * @package FiberGrid
  */
@@ -11,258 +9,142 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-function fg_uid() {
-    return substr( md5( uniqid( (string) wp_rand(), true ) ), 0, 7 );
-}
+class FiberGrid_Page_Seeder {
 
-function fg_rep( array $rows ) {
-    return array_map( function( $r ) {
-        $r['_id'] = fg_uid();
-        return $r;
-    }, $rows );
-}
-
-/**
- * Builds modern flexbox containers wrapping widgets
- */
-function fg_build_container_tree( array $widgets ) {
-    $tree = array();
-    foreach ( $widgets as $w ) {
-        $tree[] = array(
-            'id'       => fg_uid(),
-            'elType'   => 'container',
-            'settings' => array(
-                'content_width' => 'full',
-                'flex_gap'      => array( 'unit' => 'px', 'size' => 0, 'column' => '0', 'row' => '0' ),
-                'padding'       => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true ),
-            ),
-            'isInner'  => false,
-            'elements' => array(
-                array(
-                    'id'         => fg_uid(),
-                    'elType'     => 'widget',
-                    'widgetType' => $w['type'],
-                    'settings'   => isset( $w['settings'] ) ? $w['settings'] : array(),
-                    'elements'   => array(),
-                ),
-            ),
-        );
-    }
-    return $tree;
-}
-
-function fg_persist_page( $page_id, array $tree, $is_front = false ) {
-    update_option( 'elementor_experiment-container', 'active' );
-    update_post_meta( $page_id, '_elementor_data', wp_slash( wp_json_encode( $tree ) ) );
-    update_post_meta( $page_id, '_elementor_edit_mode', 'builder' );
-    update_post_meta( $page_id, '_elementor_template_type', 'wp-page' );
-    update_post_meta( $page_id, '_wp_page_template', 'elementor_header_footer' );
-
-    if ( defined( 'ELEMENTOR_VERSION' ) ) {
-        update_post_meta( $page_id, '_elementor_version', ELEMENTOR_VERSION );
+    public static function get_pages_blueprint() {
+        return json_decode( '{"front-page":{"title":"Home","widgets":["fg_home_sec_1","fg_home_sec_2","fg_home_sec_3","fg_home_sec_4","fg_home_sec_5","fg_home_sec_6","fg_home_sec_7","fg_home_sec_8","fg_home_sec_9","fg_home_sec_10"]},"about-us":{"title":"About Us","widgets":["fg_about_sec_1","fg_about_sec_2","fg_about_sec_3","fg_about_sec_4","fg_about_sec_5","fg_about_sec_6","fg_about_sec_7","fg_about_sec_8","fg_about_sec_9"]},"ip-transit":{"title":"High-Speed IP Transit","widgets":["fg_transit_sec_1","fg_transit_sec_2","fg_transit_sec_3","fg_transit_sec_4","fg_transit_sec_5","fg_transit_sec_6","fg_transit_sec_7","fg_transit_sec_8","fg_transit_sec_9","fg_transit_sec_10"]},"colocation":{"title":"Global Colocation","widgets":["fg_colo_sec_1","fg_colo_sec_2","fg_colo_sec_3","fg_colo_sec_4","fg_colo_sec_5","fg_colo_sec_6","fg_colo_sec_7","fg_colo_sec_8","fg_colo_sec_9","fg_colo_sec_10"]},"blog":{"title":"Engineering Blog","widgets":["fg_blog_sec_1","fg_blog_sec_2","fg_blog_sec_3","fg_blog_sec_4","fg_blog_sec_5","fg_blog_sec_6"]},"subsea-cable-expansion-2024":{"title":"Subsea Cable Expansion 2024","widgets":["fg_blog_single_sec_1","fg_blog_single_sec_2","fg_blog_single_sec_3","fg_blog_single_sec_4","fg_blog_single_sec_5"]},"contact":{"title":"Contact & Support","widgets":["fg_contact_sec_1","fg_contact_sec_2","fg_contact_sec_3","fg_contact_sec_4"]}}', true );
     }
 
-    if ( $is_front ) {
-        update_option( 'show_on_front', 'page' );
-        update_option( 'page_on_front', $page_id );
-    }
+    public static function build_pages() {
+        // Ensure container experiment is active
+        update_option( 'elementor_experiment-container', 'active' );
 
-    if ( class_exists( '\Elementor\Plugin' ) ) {
-        \Elementor\Plugin::$instance->files_manager->clear_cache();
-    }
-}
+        $blueprint = self::get_pages_blueprint();
+        $created_pages = array();
 
-/**
- * Main Seeder Routine for all 9 Stitch screens
- */
-function fg_seed_all_screens() {
-    // 1. #home — Homepage Redesign
-    $home_id = get_option( 'page_on_front' );
-    if ( ! $home_id || ! get_post( $home_id ) ) {
-        $home_id = wp_insert_post( array(
-            'post_title'   => 'FiberGrid — Ultra Low-Latency IP Transit & Colocation',
-            'post_name'    => 'home',
-            'post_status'  => 'publish',
-            'post_type'    => 'page',
-        ) );
-    }
+        foreach ( $blueprint as $slug => $data ) {
+            $is_front = ( 'front-page' === $slug );
+            $post_slug = $is_front ? 'home' : $slug;
 
-    $home_tree = fg_build_container_tree( array(
-        array(
-            'type'     => 'fg_hero_telemetry',
-            'settings' => array(
-                'eyebrow'         => 'Bare Metal & IP Transit',
-                'title_prefix'    => 'Ultra Low-Latency',
-                'title_highlight' => 'IP Transit',
-                'title_suffix'    => '& Global Data Center Infrastructure.',
-                'lede'            => 'Powering mission-critical connectivity, enterprise colocation, and virtual data centers across 15 countries and 4 continents with direct Tier 1 backbone routing.',
-                'btn1_text'       => 'Explore Infrastructure',
-                'btn1_link'       => array( 'url' => '#pricing-matrix' ),
-                'btn2_text'       => 'Request Quote',
-                'btn2_link'       => array( 'url' => '/contact/' ),
-                'telemetry_ping'  => '< 1.5ms Core Latency',
-            ),
-        ),
-        array(
-            'type'     => 'fg_carrier_ribbon',
-            'settings' => array(
-                'stat_number' => '100+',
-                'stat_label'  => 'TRUSTED BY FAST-GROWING COMPANIES WORLDWIDE',
-            ),
-        ),
-        array(
-            'type'     => 'fg_telemetry_cards',
-            'settings' => array(
-                'eyebrow' => '{ Capacity And Availability }',
-                'title'   => 'A Platform You Can Rely On.',
-                'lede'    => 'Engineered for mission-critical IT infrastructure today, with the operational flexibility to expand into next-generation high-compute clusters.',
-            ),
-        ),
-        array(
-            'type'     => 'fg_solutions_grid',
-            'settings' => array(
-                'eyebrow' => 'Core Capabilities',
-                'title'   => 'Purpose-Built Telecommunications & Cloud Infrastructure',
-            ),
-        ),
-        array(
-            'type'     => 'fg_cta_band',
-            'settings' => array(
-                'eyebrow'   => 'Accelerate Your Infrastructure',
-                'title'     => 'Ready to Deploy Carrier-Grade Optical Bandwidth?',
-                'lede'      => 'Speak with a senior network engineer today. Receive custom BGP route testing, colocation rack pricing, and tailored multi-homed SLA guarantees.',
-                'btn1_text' => 'Request Bandwidth Quote',
-                'btn1_link' => array( 'url' => '/contact/' ),
-            ),
-        ),
-    ) );
-    fg_persist_page( $home_id, $home_tree, true );
+            // Check if page exists
+            $existing_page = get_page_by_path( $post_slug );
+            $page_id = 0;
 
-    // Helper to get or insert page
-    $get_page = function( $slug, $title ) {
-        $page = get_page_by_path( $slug );
-        if ( $page ) {
-            return $page->ID;
+            if ( $existing_page ) {
+                $page_id = $existing_page->ID;
+                wp_update_post( array(
+                    'ID'          => $page_id,
+                    'post_title'  => $data['title'],
+                    'post_status' => 'publish',
+                    'post_type'   => 'page',
+                ) );
+            } else {
+                $page_id = wp_insert_post( array(
+                    'post_title'   => $data['title'],
+                    'post_name'    => $post_slug,
+                    'post_status'  => 'publish',
+                    'post_type'    => 'page',
+                    'post_content' => '',
+                ) );
+            }
+
+            if ( ! $page_id || is_wp_error( $page_id ) ) {
+                continue;
+            }
+
+            // Build Elementor Container tree
+            $containers = array();
+            foreach ( $data['widgets'] as $widget_name ) {
+                $container_id = substr( md5( $slug . $widget_name . uniqid() ), 0, 7 );
+                $widget_id    = substr( md5( $widget_name . $container_id ), 0, 7 );
+
+                $containers[] = array(
+                    'id'       => $container_id,
+                    'elType'   => 'container',
+                    'isInner'  => false,
+                    'settings' => array(
+                        'content_width' => 'full',
+                        'flex_gap'      => array( 'unit' => 'px', 'size' => 0 ),
+                        'padding'       => array(
+                            'unit'   => 'px',
+                            'top'    => '0',
+                            'right'  => '0',
+                            'bottom' => '0',
+                            'left'   => '0',
+                            'isLinked' => true,
+                        ),
+                    ),
+                    'elements' => array(
+                        array(
+                            'id'         => $widget_id,
+                            'elType'     => 'widget',
+                            'isInner'    => false,
+                            'widgetType' => $widget_name,
+                            'settings'   => (object) array(),
+                            'elements'   => array(),
+                        ),
+                    ),
+                );
+            }
+
+            // Update Elementor post metadata
+            update_post_meta( $page_id, '_elementor_edit_mode', 'builder' );
+            update_post_meta( $page_id, '_elementor_template_type', 'wp-page' );
+            update_post_meta( $page_id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.20.0' );
+            update_post_meta( $page_id, '_wp_page_template', 'elementor_header_footer' );
+            update_post_meta( $page_id, '_elementor_data', wp_slash( wp_json_encode( $containers ) ) );
+
+            if ( $is_front ) {
+                update_option( 'show_on_front', 'page' );
+                update_option( 'page_on_front', $page_id );
+            }
+
+            $created_pages[ $slug ] = $page_id;
         }
-        return wp_insert_post( array(
-            'post_title'   => $title,
-            'post_name'    => $slug,
-            'post_status'  => 'publish',
-            'post_type'    => 'page',
-        ) );
-    };
 
-    // 2. #ip-transit
-    $transit_id = $get_page( 'ip-transit', 'High-Speed IP Transit — FiberGrid' );
-    $transit_tree = fg_build_container_tree( array(
-        array(
-            'type'     => 'fg_hero_telemetry',
-            'settings' => array(
-                'eyebrow'         => 'Tier 1 Global Upstream',
-                'title_prefix'    => 'Dedicated High-Speed',
-                'title_highlight' => 'IP Transit',
-                'title_suffix'    => 'with Sub-Millisecond Jitter',
-                'lede'            => 'Direct peering across major African, European, and Asian Internet Exchanges with automated route optimization.',
-            ),
-        ),
-        array( 'type' => 'fg_carrier_ribbon', 'settings' => array() ),
-        array( 'type' => 'fg_looking_glass', 'settings' => array() ),
-        array( 'type' => 'fg_pricing_matrix', 'settings' => array() ),
-        array( 'type' => 'fg_cta_band', 'settings' => array() ),
-    ) );
-    fg_persist_page( $transit_id, $transit_tree );
+        // Flush rewrite rules
+        flush_rewrite_rules();
 
-    // 3. #colocation
-    $colo_id = $get_page( 'colocation', 'Global Colocation Facilities — FiberGrid' );
-    $colo_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_rack_calculator', 'settings' => array() ),
-        array( 'type' => 'fg_tier_compliance', 'settings' => array() ),
-        array( 'type' => 'fg_carrier_ribbon', 'settings' => array() ),
-        array( 'type' => 'fg_cta_band', 'settings' => array() ),
-    ) );
-    fg_persist_page( $colo_id, $colo_tree );
-
-    // 4. #virtual-data-center
-    $vdc_id = $get_page( 'virtual-data-center', 'Virtual Data Center & Cloud — FiberGrid' );
-    $vdc_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_compute_tiers', 'settings' => array() ),
-        array( 'type' => 'fg_telemetry_cards', 'settings' => array() ),
-        array( 'type' => 'fg_cta_band', 'settings' => array() ),
-    ) );
-    fg_persist_page( $vdc_id, $vdc_tree );
-
-    // 5. #about-us
-    $about_id = $get_page( 'about-us', 'About Us — FiberGrid Infrastructure' );
-    $about_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_about_story', 'settings' => array() ),
-        array( 'type' => 'fg_tier_compliance', 'settings' => array() ),
-        array( 'type' => 'fg_carrier_ribbon', 'settings' => array() ),
-        array( 'type' => 'fg_cta_band', 'settings' => array() ),
-    ) );
-    fg_persist_page( $about_id, $about_tree );
-
-    // 6. #blog
-    $blog_id = $get_page( 'blog', 'Engineering Blog & Telemetry Insights — FiberGrid' );
-    $blog_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_posts_grid', 'settings' => array() ),
-        array( 'type' => 'fg_cta_band', 'settings' => array() ),
-    ) );
-    fg_persist_page( $blog_id, $blog_tree );
-
-    // 7. #contact-us
-    $contact_id = $get_page( 'contact', 'Contact & NOC Escalation — FiberGrid' );
-    $contact_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_contact_routing', 'settings' => array() ),
-    ) );
-    fg_persist_page( $contact_id, $contact_tree );
-
-    // 8. #404 Diagnostic Preview
-    $preview_404_id = $get_page( '404-preview', '404 Route Not Found Preview — FiberGrid' );
-    $p404_tree = fg_build_container_tree( array(
-        array( 'type' => 'fg_severed_route_404', 'settings' => array() ),
-    ) );
-    fg_persist_page( $preview_404_id, $p404_tree );
-
-    return true;
+        return $created_pages;
+    }
 }
 
 /**
- * Add Admin Notice & Tool Action for Manual Trigger
+ * Register WP-CLI command
  */
-function fg_add_seeder_menu() {
-    add_management_page(
-        __( 'FiberGrid Page Seeder', 'fibergrid' ),
-        __( 'FiberGrid Demo Seeder', 'fibergrid' ),
-        'manage_options',
-        'fibergrid-seeder',
-        'fg_render_seeder_admin_page'
-    );
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    WP_CLI::add_command( 'fibergrid seed-pages', function( $args, $assoc_args ) {
+        WP_CLI::line( 'Seeding all FiberGrid Elementor pages...' );
+        $results = FiberGrid_Page_Seeder::build_pages();
+        foreach ( $results as $slug => $id ) {
+            WP_CLI::success( "Page '$slug' seeded successfully (ID: $id)" );
+        }
+        WP_CLI::success( 'All FiberGrid pages seeded perfectly with Elementor containers!' );
+    } );
 }
-add_action( 'admin_menu', 'fg_add_seeder_menu' );
 
-function fg_render_seeder_admin_page() {
-    $message = '';
-    if ( isset( $_POST['fg_run_seeder'] ) && check_admin_referer( 'fg_seeder_nonce' ) ) {
-        fg_seed_all_screens();
-        $message = __( 'All 9 FiberGrid screens successfully created and configured with Elementor flexbox containers!', 'fibergrid' );
+/**
+ * Admin action trigger
+ */
+add_action( 'admin_init', function() {
+    if ( isset( $_GET['fg_seed_pages'] ) && 'yes' === $_GET['fg_seed_pages'] && current_user_can( 'manage_options' ) ) {
+        check_admin_referer( 'fg_seed_nonce' );
+        FiberGrid_Page_Seeder::build_pages();
+        wp_safe_redirect( admin_url( 'admin.php?page=fibergrid-leads&seeded=1' ) );
+        exit;
     }
-    ?>
-    <div class="wrap">
-        <h1><?php esc_html_e( 'FiberGrid One-Click Page Seeder', 'fibergrid' ); ?></h1>
-        <p><?php esc_html_e( 'Generates the 9 final Stitch screens (Home, IP Transit, Colocation, Virtual Data Center, About Us, Engineering Blog, Contact & Support, 404 Preview) with pre-configured Elementor widgets and styling.', 'fibergrid' ); ?></p>
+} );
 
-        <?php if ( $message ) : ?>
-            <div class="notice notice-success is-dismissible">
-                <p><strong><?php echo esc_html( $message ); ?></strong></p>
-            </div>
-        <?php endif; ?>
-
-        <form method="post" style="margin-top:24px;">
-            <?php wp_nonce_field( 'fg_seeder_nonce' ); ?>
-            <button type="submit" name="fg_run_seeder" class="button button-primary button-hero">
-                <?php esc_html_e( 'Generate All 9 Pages Now', 'fibergrid' ); ?>
-            </button>
-        </form>
-    </div>
-    <?php
-}
+/**
+ * Add Seeder button to FiberGrid Leads menu
+ */
+add_action( 'admin_notices', function() {
+    $screen = get_current_screen();
+    if ( $screen && 'toplevel_page_fibergrid-leads' === $screen->id ) {
+        if ( isset( $_GET['seeded'] ) ) {
+            echo '<div class="notice notice-success is-dismissible"><p><strong>Success!</strong> All FiberGrid pages seeded with Elementor containers.</p></div>';
+        }
+        $seed_url = wp_nonce_url( admin_url( 'admin.php?page=fibergrid-leads&fg_seed_pages=yes' ), 'fg_seed_nonce' );
+        echo '<div style="margin: 15px 0;"><a href="' . esc_url( $seed_url ) . '" class="button button-primary button-hero">⚡ Re-Seed All Elementor Pages</a></div>';
+    }
+} );

@@ -1,6 +1,6 @@
 <?php
 /**
- * FiberGrid — Theme Setup & Core Bootstrap
+ * FiberGrid Theme Functions
  *
  * @package FiberGrid
  */
@@ -9,90 +9,136 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'FG_VERSION', '1.0.0' );
+define( 'FIBERGRID_VERSION', '2.0.0' );
 define( 'FG_DIR', get_template_directory() );
 define( 'FG_URI', get_template_directory_uri() );
 
 /**
- * 1. Theme Supports & Navigation Menus
+ * Theme Setup
  */
 function fg_theme_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
     add_theme_support( 'align-wide' );
-    add_theme_support( 'responsive-embeds' );
-    add_theme_support( 'html5', array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'style',
-        'script',
-    ) );
+    add_theme_support(
+        'custom-logo',
+        array(
+            'height'      => 60,
+            'width'       => 240,
+            'flex-height' => true,
+            'flex-width'  => true,
+        )
+    );
 
-    register_nav_menus( array(
-        'primary' => __( 'Primary Navigation Header', 'fibergrid' ),
-        'footer'  => __( 'Footer Navigation', 'fibergrid' ),
-    ) );
+    register_nav_menus(
+        array(
+            'primary' => esc_html__( 'Primary Header Navigation', 'fibergrid' ),
+            'footer'  => esc_html__( 'Footer Navigation', 'fibergrid' ),
+        )
+    );
 }
 add_action( 'after_setup_theme', 'fg_theme_setup' );
 
 /**
- * 2. Enqueue Front-End Stylesheets & Scripts
+ * Enqueue Frontend Scripts & Styles
  */
 function fg_enqueue_scripts() {
-    // Google Fonts: Plus Jakarta Sans, Inter, Space Mono
-    $fonts_url = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap';
-    wp_enqueue_style( 'fg-google-fonts', $fonts_url, array(), null );
+    // Theme Core CSS
+    wp_enqueue_style( 'fibergrid-main', get_stylesheet_uri(), array(), FIBERGRID_VERSION );
 
-    // Dashicons for buttons and icons
-    wp_enqueue_style( 'dashicons' );
+    // Client Interactions JS
+    wp_enqueue_script(
+        'fibergrid-interactions',
+        get_template_directory_uri() . '/assets/js/theme-interactions.js',
+        array(),
+        FIBERGRID_VERSION,
+        true
+    );
 
-    // Design Tokens & Widgets CSS
-    wp_enqueue_style( 'fg-tokens', FG_URI . '/assets/css/tokens.css', array(), FG_VERSION );
-    wp_enqueue_style( 'fg-widgets', FG_URI . '/assets/css/widgets.css', array( 'fg-tokens' ), FG_VERSION );
-    wp_enqueue_style( 'fg-style', get_stylesheet_uri(), array( 'fg-widgets' ), FG_VERSION );
-
-    // Scripts
-    wp_enqueue_script( 'fg-forms-ajax', FG_URI . '/assets/js/forms-ajax.js', array(), FG_VERSION, true );
-    wp_enqueue_script( 'fg-telemetry-hud', FG_URI . '/assets/js/telemetry-hud.js', array(), FG_VERSION, true );
-
-    // Localize variables for front-end AJAX form submissions
-    wp_localize_script( 'fg-forms-ajax', 'fg_vars', array(
-        'ajax_url' => admin_url( 'admin-ajax.php' ),
-        'nonce'    => wp_create_nonce( 'fg_form_nonce' ),
-        'home_url' => home_url( '/' ),
-    ) );
+    wp_localize_script(
+        'fibergrid-interactions',
+        'fgData',
+        array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'fg_form_nonce' ),
+        )
+    );
 }
 add_action( 'wp_enqueue_scripts', 'fg_enqueue_scripts' );
 
 /**
- * 3. Elementor Activation Notice
+ * Elementor preview iframe styling
  */
-function fg_check_elementor_active() {
-    if ( ! did_action( 'elementor/loaded' ) ) {
-        add_action( 'admin_notices', function() {
-            ?>
-            <div class="notice notice-warning is-dismissible">
-                <p>
-                    <strong><?php esc_html_e( 'FiberGrid Theme:', 'fibergrid' ); ?></strong>
-                    <?php esc_html_e( 'Please install and activate the Elementor plugin to enable the custom telecom and telemetry section widgets.', 'fibergrid' ); ?>
-                </p>
-            </div>
-            <?php
-        } );
-    }
-}
-add_action( 'admin_init', 'fg_check_elementor_active' );
+add_action( 'elementor/preview/enqueue_styles', function() {
+    wp_enqueue_style( 'fibergrid-main', get_stylesheet_uri(), array(), FIBERGRID_VERSION );
+} );
 
 /**
- * 4. Load Theme Core Modules
+ * Include Subsystems
  */
-require_once FG_DIR . '/inc/updater.php';
-require_once FG_DIR . '/inc/customizer.php';
-require_once FG_DIR . '/inc/customizer-css.php';
-require_once FG_DIR . '/inc/forms-handler.php';
-require_once FG_DIR . '/inc/forms-dashboard.php';
-require_once FG_DIR . '/inc/elementor.php';
-require_once FG_DIR . '/inc/page-seeder.php';
+require_once get_template_directory() . '/inc/updater.php';
+require_once get_template_directory() . '/inc/elementor.php';
+require_once get_template_directory() . '/inc/forms-handler.php';
+require_once get_template_directory() . '/inc/forms-dashboard.php';
+require_once get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/inc/page-seeder.php';
+
+/**
+ * 301 Permanent Redirects for Legacy Host, Server & VDC Endpoints
+ */
+add_action( 'template_redirect', function() {
+    $uri = isset( $_SERVER['REQUEST_URI'] ) ? strtolower( trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' ) ) : '';
+    $legacy_paths = array(
+        'virtual-data-center',
+        'services/cloud',
+        'services/virtual-data-center',
+        'dedicated-servers',
+        'dedicated-server',
+        'vdc',
+    );
+    foreach ( $legacy_paths as $path ) {
+        if ( $uri === $path || strpos( $uri, $path . '/' ) === 0 || is_page( $path ) ) {
+            wp_safe_redirect( home_url( '/ip-transit/' ), 301 );
+            exit;
+        }
+    }
+} );
+
+/**
+ * Meta Robots Noindex for Legacy Endpoints
+ */
+add_action( 'wp_head', function() {
+    if ( is_page( array( 'virtual-data-center', 'vdc', 'dedicated-servers', 'dedicated-server' ) ) ) {
+        echo '<meta name="robots" content="noindex, nofollow" />' . "\n";
+    }
+}, 1 );
+
+/**
+ * Filter Document Title for Pure Network Operator Branding:
+ * "IP Transit & Colocation | FiberGrid"
+ */
+add_filter( 'document_title_parts', function( $parts ) {
+    $site_name = get_bloginfo( 'name' );
+    if ( empty( $site_name ) ) {
+        $site_name = 'FiberGrid';
+    }
+    if ( is_front_page() || is_home() ) {
+        $parts['title'] = 'IP Transit & Colocation';
+        $parts['site']  = $site_name;
+    } else {
+        $parts['site'] = 'IP Transit & Colocation | ' . $site_name;
+    }
+    return $parts;
+}, 20 );
+
+add_filter( 'pre_get_document_title', function( $title ) {
+    $site_name = get_bloginfo( 'name' );
+    if ( empty( $site_name ) ) {
+        $site_name = 'FiberGrid';
+    }
+    if ( is_front_page() ) {
+        return 'IP Transit & Colocation | ' . $site_name;
+    }
+    return $title;
+}, 20 );
