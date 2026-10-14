@@ -100,7 +100,7 @@ class FiberGrid_Widget_ColoSec5 extends FiberGrid_Base_Widget {
 </div>
 <h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">Power Architecture</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            Dual independent high-voltage utility feeds backed by Schneider Electric Galaxy N+1 UPS systems with isolated lithium-ion cabinets and Cummins industrial generators with 72-hour on-site fuel reserve.
+            Dual active high-voltage feeds backed by N+1 Galaxy UPS systems with lithium-ion cabinets and Cummins diesel generators (72h on-site fuel).
           </p>
 <div class="pt-4 border-t border-grid-line/60 flex flex-col gap-2 font-label-mono text-label-mono text-deep-navy font-semibold">
 <div class="flex items-center gap-2">
@@ -124,7 +124,7 @@ class FiberGrid_Widget_ColoSec5 extends FiberGrid_Base_Widget {
 </div>
 <h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">Precision Cooling</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            Engineered hot and cold aisle containment pairs with variable-speed downflow CRAC units operating in N+1 configuration. Strict environmental compliance adhering to ASHRAE TC 9.9 thermal envelopes.
+            Hot and cold aisle containment paired with variable-speed downflow CRAC units in N+1 redundancy adhering to ASHRAE TC 9.9 envelopes.
           </p>
 <div class="pt-4 border-t border-grid-line/60 flex flex-col gap-2 font-label-mono text-label-mono text-deep-navy font-semibold">
 <div class="flex items-center gap-2">
@@ -146,9 +146,9 @@ class FiberGrid_Widget_ColoSec5 extends FiberGrid_Base_Widget {
 <div class="w-14 h-14 rounded-xl bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm">
 <span class="material-symbols-outlined text-[32px]">security</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">5-Layer Physical Security</h3>
+<h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">5-Layer Security</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            Perimeter anti-ram barriers, multi-factor mantrap entryways with dual biometric iris and palm scanners, continuous on-site security guards, and 4K digital CCTV with 90-day retention policies.
+            Anti-ram perimeter barriers, mantrap entryways with biometric iris and palm authentication, 24/7 security guards, and 90-day 4K CCTV.
           </p>
 <div class="pt-4 border-t border-grid-line/60 flex flex-col gap-2 font-label-mono text-label-mono text-deep-navy font-semibold">
 <div class="flex items-center gap-2">
@@ -172,7 +172,7 @@ class FiberGrid_Widget_ColoSec5 extends FiberGrid_Base_Widget {
 </div>
 <h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">Carrier-Neutral Mesh</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            Direct single-mode optical fiber cross-connects to over 50 telecommunications carriers, cloud direct connects (AWS, Azure, Google Cloud), and dark fiber metro rings terminating inside dual Meet-Me-Rooms (MMR).
+            Single-mode fiber cross-connects to 50+ tier-1 carriers, cloud on-ramps (AWS, Azure, GCP), and dark fiber metro rings via dual Meet-Me-Rooms.
           </p>
 <div class="pt-4 border-t border-grid-line/60 flex flex-col gap-2 font-label-mono text-label-mono text-deep-navy font-semibold">
 <div class="flex items-center gap-2">

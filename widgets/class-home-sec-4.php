@@ -319,46 +319,6 @@ class FiberGrid_Widget_HomeSec4 extends FiberGrid_Base_Widget {
                     </div>
                 </div>
 
-                <!-- FEATURE ROW 3: BGP Interconnection & IXPs -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                    <div class="lg:col-span-6 flex flex-col gap-5">
-                        <div class="w-10 h-10 rounded-lg bg-cyan-pulse/10 text-cyan-pulse flex items-center justify-center mb-1">
-                            <span class="material-symbols-outlined text-xl">hub</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-bold text-[#0b1c30] tracking-tight"><?php echo esc_html( $p3_title ); ?></h3>
-                        <p class="text-base text-on-surface-variant leading-relaxed"><?php echo esc_html( $p3_desc ); ?></p>
-                        <div class="flex flex-col gap-2.5 pt-2 text-sm text-[#0b1c30]">
-                            <div class="flex items-center gap-2.5">
-                                <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>
-                                <span>Autonomous Core Routing</span>
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>
-                                <span>Sub-15ms Regional Latency Across Metro Fabrics</span>
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>
-                                <span>Direct Cross-Connects to Major Internet Exchanges</span>
-                            </div>
-                            <div class="flex items-center gap-2.5">
-                                <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>
-                                <span>Real-Time Looking Glass Route Inspection</span>
-                            </div>
-                        </div>
-                        <div class="pt-3">
-                            <a class="inline-flex items-center gap-1.5 font-bold text-sm text-[#0066ff] hover:text-primary transition-colors" href="<?php echo esc_url( $p3_link['url'] ?? '#' ); ?>">
-                                <?php echo esc_html( $p3_text ); ?>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-6 relative flex items-center justify-center">
-                        <div class="relative w-full max-w-[480px]">
-                            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-[4/3.5] border border-slate-100">
-                                <img alt="Modern telecommunications network operations center and high-speed BGP routing infrastructure" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOR_fqhSDoylMA6NGO2I-o53kNWGzCIAvIrRCXqtsI7DvPtGAdyVlkdlQEy9X_FUJ_Ok5yUmlzU9Yu6B4nAPFISffvFPCdaCbuu2Kq8-Rd9azr5TwzGoSt1IM7xHxl_14EXVlFsgL3mwGo45nV6AJqiXcnsEmerbYkUiBmkz_W1YEP-buBoTORA1ig_nomOZZqV50zYgaAdAvGa3byPKvUej0GhYTz9xnvkY9hKkRqNwTdoA_4PLWcWA">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b1c30]/50 via-transparent to-transparent"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

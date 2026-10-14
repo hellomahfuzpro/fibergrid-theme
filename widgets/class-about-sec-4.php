@@ -92,9 +92,6 @@ class FiberGrid_Widget_AboutSec4 extends FiberGrid_Base_Widget {
             <?php echo wp_kses_post( $title ); ?>
           </h2>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-6"><?php echo esc_html( $desc ); ?></p>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-8">
-            Unlike consolidated telecom conglomerates with layered bureaucracy, FiberGrid maintains flat engineering directness. When network architects or system administrators raise a question, they interface directly with Tier-3 network operations engineers who hold hands-on control over the physical racks, BGP tables, and cross-connect patch fields.
-          </p>
 <!-- Key Highlights Bento Box -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div class="p-6 rounded-xl bg-surface-ice">

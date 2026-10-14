@@ -171,33 +171,21 @@ class FiberGrid_Widget_ContactSec2 extends FiberGrid_Base_Widget {
                         </div>
 
                         <!-- Value Checklist -->
-                        <div class="flex flex-col gap-3.5">
-                            <span class="font-label-ui text-label-ui uppercase tracking-wider text-on-surface font-bold">
-                                Our engineering team can help you:
+                        <div class="flex flex-col gap-3">
+                            <span class="font-label-ui text-label-ui uppercase tracking-wider text-on-surface font-bold text-xs">
+                                Direct Engineering Capabilities:
                             </span>
-                            <div class="flex items-start gap-3">
-                                <div class="w-5 h-5 rounded-full bg-optical-blue/10 text-optical-blue flex items-center justify-center shrink-0 mt-0.5">
-                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
-                                </div>
-                                <span class="font-body-md text-body-md text-on-surface">Answer technical questions regarding IP transit routes, BGP communities, and dual-stack IPv4/IPv6 allocation.</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="material-symbols-outlined text-optical-blue text-base font-bold">check</span>
+                                <span class="font-body-md text-sm text-on-surface">BGP routing feeds, custom communities &amp; IPv4/IPv6 allocations.</span>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-5 h-5 rounded-full bg-optical-blue/10 text-optical-blue flex items-center justify-center shrink-0 mt-0.5">
-                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
-                                </div>
-                                <span class="font-body-md text-body-md text-on-surface">Access custom bandwidth pricing, commit burst levels, and multi-cabinet colocation volume discounts.</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="material-symbols-outlined text-optical-blue text-base font-bold">check</span>
+                                <span class="font-body-md text-sm text-on-surface">Tailored bandwidth commitments (10G/40G/100G) &amp; rack footprints.</span>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-5 h-5 rounded-full bg-optical-blue/10 text-optical-blue flex items-center justify-center shrink-0 mt-0.5">
-                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
-                                </div>
-                                <span class="font-body-md text-body-md text-on-surface">Get started on FiberGrid faster with complimentary remote racking, patch cross-connects, and seamless migration assistance.</span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-5 h-5 rounded-full bg-optical-blue/10 text-optical-blue flex items-center justify-center shrink-0 mt-0.5">
-                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
-                                </div>
-                                <span class="font-body-md text-body-md text-on-surface">Design tailored high-availability multi-homed transit topologies to meet your SLA.</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="material-symbols-outlined text-optical-blue text-base font-bold">check</span>
+                                <span class="font-body-md text-sm text-on-surface">Rapid optical cross-connects &amp; remote hands racking assistance.</span>
                             </div>
                         </div>
 
