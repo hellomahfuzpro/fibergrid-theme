@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'FIBERGRID_VERSION', '2.0.2' );
+define( 'FIBERGRID_VERSION', '2.0.3' );
 define( 'FG_DIR', get_template_directory() );
 define( 'FG_URI', get_template_directory_uri() );
 
@@ -21,6 +21,8 @@ function fg_theme_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
     add_theme_support( 'align-wide' );
+    add_theme_support( 'widgets' );
+    add_theme_support( 'widgets-block-editor' );
     add_theme_support(
         'custom-logo',
         array(
@@ -33,12 +35,69 @@ function fg_theme_setup() {
 
     register_nav_menus(
         array(
-            'primary' => esc_html__( 'Primary Header Navigation', 'fibergrid' ),
-            'footer'  => esc_html__( 'Footer Navigation', 'fibergrid' ),
+            'primary'      => esc_html__( 'Primary Header Navigation', 'fibergrid' ),
+            'footer'       => esc_html__( 'Footer Navigation (General)', 'fibergrid' ),
+            'footer_col_1' => esc_html__( 'Footer Column 1: Core Solutions', 'fibergrid' ),
+            'footer_col_2' => esc_html__( 'Footer Column 2: Network & Resources', 'fibergrid' ),
+            'footer_col_3' => esc_html__( 'Footer Column 3: Company', 'fibergrid' ),
         )
     );
 }
 add_action( 'after_setup_theme', 'fg_theme_setup' );
+
+/**
+ * Register Widget Areas (Sidebars)
+ */
+function fg_widgets_init() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer Column 1: Core Solutions', 'fibergrid' ),
+            'id'            => 'footer-col-1',
+            'description'   => esc_html__( 'Add widgets here to appear in footer column 1. Replaces default Core Solutions links.', 'fibergrid' ),
+            'before_widget' => '<div id="%1$s" class="fg-footer-widget %2$s flex flex-col gap-3">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="text-sm font-bold text-[#0b1c30]">',
+            'after_title'   => '</h4>',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer Column 2: Network & Resources', 'fibergrid' ),
+            'id'            => 'footer-col-2',
+            'description'   => esc_html__( 'Add widgets here to appear in footer column 2. Replaces default Network & Resources links.', 'fibergrid' ),
+            'before_widget' => '<div id="%1$s" class="fg-footer-widget %2$s flex flex-col gap-3">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="text-sm font-bold text-[#0b1c30]">',
+            'after_title'   => '</h4>',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer Column 3: Company', 'fibergrid' ),
+            'id'            => 'footer-col-3',
+            'description'   => esc_html__( 'Add widgets here to appear in footer column 3. Replaces default Company links.', 'fibergrid' ),
+            'before_widget' => '<div id="%1$s" class="fg-footer-widget %2$s flex flex-col gap-3">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="text-sm font-bold text-[#0b1c30]">',
+            'after_title'   => '</h4>',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer Brand Column', 'fibergrid' ),
+            'id'            => 'footer-brand',
+            'description'   => esc_html__( 'Optional widget area displayed in the footer brand column.', 'fibergrid' ),
+            'before_widget' => '<div id="%1$s" class="fg-footer-widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="text-sm font-bold text-[#0b1c30] mb-3">',
+            'after_title'   => '</h4>',
+        )
+    );
+}
+add_action( 'widgets_init', 'fg_widgets_init' );
 
 /**
  * Enqueue Frontend Scripts & Styles

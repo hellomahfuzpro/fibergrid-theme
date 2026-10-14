@@ -254,7 +254,7 @@ function fg_dispatch_submission_email( $lead_id, $data ) {
         $auto_body .= '<h3 style="margin-top: 0; color: #0066ff;">FiberGrid</h3>';
         $auto_body .= '<div style="white-space: pre-wrap; font-size: 14px; color: #334155;">' . esc_html( $auto_body_text ) . '</div>';
         $auto_body .= '<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">';
-        $auto_body .= '<p style="font-size: 12px; color: #94a3b8; margin: 0;">FiberGrid Network Operations • AS328224</p>';
+        $auto_body .= '<p style="font-size: 12px; color: #94a3b8; margin: 0;">FiberGrid Network Operations</p>';
         $auto_body .= '</div></body></html>';
 
         $auto_headers = array(

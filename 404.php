@@ -129,7 +129,7 @@ Direct IXP peering sessions across NAPAfrica, JINX, and LINX with automated BGP 
 <div class="font-label-mono text-label-mono text-optical-blue mb-1 uppercase font-semibold">NOC Utilities</div>
 <h3 class="font-headline-sm text-headline-sm text-deep-navy mb-2 group-hover:text-optical-blue transition-colors">Telemetry &amp; Peering</h3>
 <p class="font-body-md text-body-md text-secondary mb-6 leading-relaxed">
-Interactive BGP looking glass, realtime latency graphs, ping/traceroute verification engines, and PeeringDB records for AS328224.
+Interactive BGP looking glass, realtime latency graphs, ping/traceroute verification engines, and PeeringDB interconnection records.
 </p>
 </div>
 <div class="flex items-center gap-1 font-label-ui text-label-ui text-optical-blue font-semibold group-hover:gap-2 transition-all">

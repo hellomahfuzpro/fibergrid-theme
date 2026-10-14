@@ -330,7 +330,7 @@ class FiberGrid_Widget_HomeSec4 extends FiberGrid_Base_Widget {
                         <div class="flex flex-col gap-2.5 pt-2 text-sm text-[#0b1c30]">
                             <div class="flex items-center gap-2.5">
                                 <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>
-                                <span>AS328224 Autonomous Core Routing</span>
+                                <span>Autonomous Core Routing</span>
                             </div>
                             <div class="flex items-center gap-2.5">
                                 <span class="material-symbols-outlined text-status-healthy text-lg shrink-0">check_circle</span>

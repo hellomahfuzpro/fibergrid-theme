@@ -570,6 +570,120 @@ add_action( 'customize_register', function( $wp_customize ) {
         )
     );
 
+    // Footer Column 1 Title
+    $wp_customize->add_setting(
+        'fg_footer_col1_title',
+        array(
+            'default'           => 'Core Solutions',
+            'transport'         => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col1_title',
+        array(
+            'label'       => esc_html__( 'Column 1 Title', 'fibergrid' ),
+            'description' => esc_html__( 'Title for footer column 1. Overrideable via Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'text',
+        )
+    );
+
+    // Footer Column 1 Custom Links
+    $wp_customize->add_setting(
+        'fg_footer_col1_links',
+        array(
+            'default'           => '',
+            'transport'         => 'refresh',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col1_links',
+        array(
+            'label'       => esc_html__( 'Column 1 Custom Links (Optional)', 'fibergrid' ),
+            'description' => esc_html__( 'Enter one link per line in format: Label | URL. Leave empty to use default curated links, Appearance → Menus, or Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'textarea',
+        )
+    );
+
+    // Footer Column 2 Title
+    $wp_customize->add_setting(
+        'fg_footer_col2_title',
+        array(
+            'default'           => 'Network & Resources',
+            'transport'         => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col2_title',
+        array(
+            'label'       => esc_html__( 'Column 2 Title', 'fibergrid' ),
+            'description' => esc_html__( 'Title for footer column 2. Overrideable via Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'text',
+        )
+    );
+
+    // Footer Column 2 Custom Links
+    $wp_customize->add_setting(
+        'fg_footer_col2_links',
+        array(
+            'default'           => '',
+            'transport'         => 'refresh',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col2_links',
+        array(
+            'label'       => esc_html__( 'Column 2 Custom Links (Optional)', 'fibergrid' ),
+            'description' => esc_html__( 'Enter one link per line in format: Label | URL. Leave empty to use default curated links, Appearance → Menus, or Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'textarea',
+        )
+    );
+
+    // Footer Column 3 Title
+    $wp_customize->add_setting(
+        'fg_footer_col3_title',
+        array(
+            'default'           => 'Company',
+            'transport'         => 'postMessage',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col3_title',
+        array(
+            'label'       => esc_html__( 'Column 3 Title', 'fibergrid' ),
+            'description' => esc_html__( 'Title for footer column 3. Overrideable via Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'text',
+        )
+    );
+
+    // Footer Column 3 Custom Links
+    $wp_customize->add_setting(
+        'fg_footer_col3_links',
+        array(
+            'default'           => '',
+            'transport'         => 'refresh',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        )
+    );
+    $wp_customize->add_control(
+        'fg_footer_col3_links',
+        array(
+            'label'       => esc_html__( 'Column 3 Custom Links (Optional)', 'fibergrid' ),
+            'description' => esc_html__( 'Enter one link per line in format: Label | URL. Leave empty to use default curated links, Appearance → Menus, or Appearance → Widgets.', 'fibergrid' ),
+            'section'     => 'fg_footer_section',
+            'type'        => 'textarea',
+        )
+    );
+
     // Footer Copyright
     $wp_customize->add_setting(
         'fg_footer_copyright',

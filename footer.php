@@ -8,6 +8,110 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+/**
+ * Helper function to render an editable footer column
+ */
+if ( ! function_exists( 'fg_render_footer_column' ) ) {
+    function fg_render_footer_column( $col_index, $default_title, $default_links, $sidebar_id, $menu_location ) {
+        // 1. If sidebar has active widgets, render sidebar
+        if ( is_active_sidebar( $sidebar_id ) ) {
+            dynamic_sidebar( $sidebar_id );
+            return;
+        }
+
+        // 2. Output Column Title
+        $title = get_theme_mod( "fg_footer_col{$col_index}_title", $default_title );
+        echo '<h4 class="text-sm font-bold text-[#0b1c30]">' . esc_html( $title ) . '</h4>';
+
+        // 3. If a custom WP menu is assigned to this location, render it
+        if ( has_nav_menu( $menu_location ) ) {
+            wp_nav_menu(
+                array(
+                    'theme_location' => $menu_location,
+                    'container'      => 'nav',
+                    'container_class'=> 'fg-footer-nav flex flex-col gap-2.5 text-sm text-on-surface-variant',
+                    'menu_class'     => 'flex flex-col gap-2.5',
+                    'fallback_cb'    => false,
+                    'depth'          => 1,
+                    'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                )
+            );
+            return;
+        }
+
+        // 4. If Customizer custom links textarea has content
+        $custom_links_raw = get_theme_mod( "fg_footer_col{$col_index}_links" );
+        if ( ! empty( $custom_links_raw ) ) {
+            $lines = explode( "\n", str_replace( "\r", "", $custom_links_raw ) );
+            echo '<nav class="fg-footer-nav flex flex-col gap-2.5 text-sm text-on-surface-variant">';
+            foreach ( $lines as $line ) {
+                $line = trim( $line );
+                if ( empty( $line ) ) continue;
+                $parts = explode( '|', $line );
+                $label = trim( $parts[0] );
+                $url   = isset( $parts[1] ) ? trim( $parts[1] ) : '#';
+                if ( strpos( $url, 'http' ) !== 0 && strpos( $url, '/' ) !== 0 && strpos( $url, '#' ) !== 0 ) {
+                    $url = home_url( '/' . ltrim( $url, '/' ) );
+                }
+                $is_external = strpos( $url, 'http' ) === 0 && strpos( $url, home_url() ) === false;
+                echo '<a class="hover:text-primary transition-colors' . ( $is_external ? ' flex items-center gap-1.5' : '' ) . '" href="' . esc_url( $url ) . '"' . ( $is_external ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>';
+                echo esc_html( $label );
+                if ( $is_external ) {
+                    echo '<span class="material-symbols-outlined text-[13px] text-outline">open_in_new</span>';
+                }
+                echo '</a>';
+            }
+            echo '</nav>';
+            return;
+        }
+
+        // 5. Default curated fallback links
+        echo '<nav class="fg-footer-nav flex flex-col gap-2.5 text-sm text-on-surface-variant">';
+        foreach ( $default_links as $item ) {
+            $is_external = ! empty( $item['external'] );
+            $url = $item['url'];
+            if ( strpos( $url, 'http' ) !== 0 ) {
+                $url = home_url( $url );
+            }
+            echo '<a class="hover:text-primary transition-colors' . ( $is_external ? ' flex items-center gap-1.5' : '' ) . '" href="' . esc_url( $url ) . '"' . ( $is_external ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>';
+            if ( ! empty( $item['status_dot'] ) ) {
+                echo '<span class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span>';
+            }
+            echo '<span>' . esc_html( $item['label'] ) . '</span>';
+            if ( $is_external && empty( $item['status_dot'] ) ) {
+                echo '<span class="material-symbols-outlined text-[13px] text-outline">open_in_new</span>';
+            }
+            echo '</a>';
+        }
+        echo '</nav>';
+    }
+}
+
+$fg_col1_defaults = array(
+    array( 'label' => 'IP Transit', 'url' => '/ip-transit/' ),
+    array( 'label' => 'Enterprise Colocation', 'url' => '/colocation/' ),
+    array( 'label' => 'Global Network Reach', 'url' => '/#global-presence' ),
+    array( 'label' => 'Custom Bandwidth Commit', 'url' => '/contact/' ),
+    array( 'label' => '24/7 Operations Desk', 'url' => '/contact/' ),
+);
+
+$fg_col2_defaults = array(
+    array( 'label' => 'PeeringDB', 'url' => 'https://www.peeringdb.com/', 'external' => true ),
+    array( 'label' => 'Looking Glass', 'url' => '/ip-transit/#looking-glass' ),
+    array( 'label' => 'Peering Policy', 'url' => '/ip-transit/#peering-policy' ),
+    array( 'label' => 'BGP Communities', 'url' => '/ip-transit/#bgp-communities' ),
+    array( 'label' => 'Acceptable Use Policy (AUP)', 'url' => '/aup/' ),
+    array( 'label' => 'Abuse Contact', 'url' => '/contact/#abuse' ),
+    array( 'label' => 'Network Status', 'url' => 'https://status.fibergrid.co.za', 'external' => true, 'status_dot' => true ),
+);
+
+$fg_col3_defaults = array(
+    array( 'label' => 'Company Overview', 'url' => '/about-us/' ),
+    array( 'label' => 'Data Centers & PoPs', 'url' => '/about-us/#presence' ),
+    array( 'label' => 'Engineering Blog', 'url' => '/blog/' ),
+    array( 'label' => 'Contact Engineering', 'url' => '/contact/' ),
+);
 ?>
 </main>
 
@@ -59,43 +163,20 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                     </div>
                 </div>
+                <?php if ( is_active_sidebar( 'footer-brand' ) ) : ?>
+                    <div class="fg-footer-brand-widget pt-2">
+                        <?php dynamic_sidebar( 'footer-brand' ); ?>
+                    </div>
+                <?php endif; ?>
             </div>
-            <div class="lg:col-span-3 flex flex-col gap-3">
-                <h4 class="text-sm font-bold text-[#0b1c30]">Core Solutions</h4>
-                <nav class="flex flex-col gap-2.5 text-sm text-on-surface-variant">
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/ip-transit/' ) ); ?>">IP Transit (AS328224)</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/colocation/' ) ); ?>">Enterprise Colocation</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/#global-presence' ) ); ?>">Global Network Reach</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Custom Bandwidth Commit</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">24/7 Operations Desk</a>
-                </nav>
+            <div class="lg:col-span-3 flex flex-col gap-3 fg-footer-col">
+                <?php fg_render_footer_column( 1, 'Core Solutions', $fg_col1_defaults, 'footer-col-1', 'footer_col_1' ); ?>
             </div>
-            <div class="lg:col-span-3 flex flex-col gap-3">
-                <h4 class="text-sm font-bold text-[#0b1c30]">Network &amp; Resources</h4>
-                <nav class="flex flex-col gap-2.5 text-sm text-on-surface-variant">
-                    <a class="hover:text-primary transition-colors flex items-center gap-1.5" href="https://www.peeringdb.com/net/328224" target="_blank" rel="noopener noreferrer">
-                        <span>PeeringDB</span>
-                        <span class="material-symbols-outlined text-[13px] text-outline">open_in_new</span>
-                    </a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/ip-transit/#looking-glass' ) ); ?>">Looking Glass</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/ip-transit/#peering-policy' ) ); ?>">Peering Policy</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/ip-transit/#bgp-communities' ) ); ?>">BGP Communities</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/aup/' ) ); ?>">Acceptable Use Policy (AUP)</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/contact/#abuse' ) ); ?>">Abuse Contact</a>
-                    <a class="hover:text-primary transition-colors flex items-center gap-1.5" href="https://status.fibergrid.co.za" target="_blank" rel="noopener noreferrer">
-                        <span class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span>
-                        <span>Network Status</span>
-                    </a>
-                </nav>
+            <div class="lg:col-span-3 flex flex-col gap-3 fg-footer-col">
+                <?php fg_render_footer_column( 2, 'Network & Resources', $fg_col2_defaults, 'footer-col-2', 'footer_col_2' ); ?>
             </div>
-            <div class="lg:col-span-2 flex flex-col gap-3">
-                <h4 class="text-sm font-bold text-[#0b1c30]">Company</h4>
-                <nav class="flex flex-col gap-2.5 text-sm text-on-surface-variant">
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">Company Overview</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/about-us/#presence' ) ); ?>">Data Centers &amp; PoPs</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Engineering Blog</a>
-                    <a class="hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Engineering</a>
-                </nav>
+            <div class="lg:col-span-2 flex flex-col gap-3 fg-footer-col">
+                <?php fg_render_footer_column( 3, 'Company', $fg_col3_defaults, 'footer-col-3', 'footer_col_3' ); ?>
             </div>
         </div>
         <div class="pt-8 border-t border-[#e2e8f0] flex flex-col items-center justify-center text-center gap-1.5 text-xs text-on-surface-variant">

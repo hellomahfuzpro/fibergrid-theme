@@ -165,24 +165,24 @@ class FiberGrid_Widget_TransitSec6 extends FiberGrid_Base_Widget {
 <div class="space-y-4">
 <div class="bg-surface-container-lowest p-4 rounded-xl">
 <div class="flex items-center justify-between mb-1">
-<span class="font-label-mono font-bold text-xs text-primary">328224:666</span>
+<span class="font-label-mono font-bold text-xs text-primary">ASN:666</span>
 <span class="font-label-mono text-[11px] text-route-orange uppercase font-semibold">Remotely Triggered Blackhole (RTBH)</span>
 </div>
 <p class="font-body-sm text-xs text-on-surface-variant">Instant DDoS scrubbing; null-routes designated /32 hosts across all border routers instantly.</p>
 </div>
 <div class="bg-surface-container-lowest p-4 rounded-xl">
 <div class="flex items-center justify-between mb-1">
-<span class="font-label-mono font-bold text-xs text-primary">328224:100..400</span>
+<span class="font-label-mono font-bold text-xs text-primary">ASN:100..400</span>
 <span class="font-label-mono text-[11px] text-on-surface font-semibold">Local Preference Modifiers</span>
 </div>
 <p class="font-body-sm text-xs text-on-surface-variant">Explicitly bias outbound paths via Cogent, NTT, HE, or regional exchanges.</p>
 </div>
 <div class="bg-surface-container-lowest p-4 rounded-xl">
 <div class="flex items-center justify-between mb-1">
-<span class="font-label-mono font-bold text-xs text-primary">328224:1..3</span>
+<span class="font-label-mono font-bold text-xs text-primary">ASN:1..3</span>
 <span class="font-label-mono text-[11px] text-on-surface font-semibold">Automated AS-Path Prepending</span>
 </div>
-<p class="font-body-sm text-xs text-on-surface-variant">Prepend AS328224 up to 3 times to specific peers to engineer symmetric ingress paths.</p>
+<p class="font-body-sm text-xs text-on-surface-variant">Prepend ASN up to 3 times to specific peers to engineer symmetric ingress paths.</p>
 </div>
 </div>
 </div>
