@@ -92,7 +92,7 @@ class FiberGrid_Widget_ColoSec9 extends FiberGrid_Base_Widget {
                                 <span class="text-optical-blue font-bold text-[22px] leading-none select-none">—</span>
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-headline-sm text-headline-sm text-deep-navy font-bold">What colocation rack footprints are available?</h3>
-                                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">We offer standardized Quarter Racks (10U Secured), Half Racks (21U Partitioned), and Full Racks (42U Private Locking Cabinets) with dedicated A+B power feeds and metered distribution. For hyperscale or custom workloads, we design dedicated high-density private cages and pods scaling from 10kW to 40kW+ with modular hot/cold aisle containment.</p>
+                                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">We offer standardized Quarter (10U), Half (21U), and Full (42U) racks with redundant A+B power feeds and metered distribution. High-density private cages (10kW–40kW+) available on request.</p>
                                 </div>
                             </div>
                         </div>
