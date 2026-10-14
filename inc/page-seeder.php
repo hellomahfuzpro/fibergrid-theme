@@ -15,7 +15,7 @@ class FiberGrid_Page_Seeder {
         return array(
             'front-page' => array(
                 'title'   => 'Home',
-                'widgets' => array( 'fg_home_sec_1', 'fg_home_sec_4', 'fg_home_sec_6', 'fg_home_sec_7', 'fg_home_sec_9' ),
+                'widgets' => array( 'fg_home_sec_1', 'fg_home_sec_4', 'fg_home_sec_6', 'fg_home_sec_7', 'fg_home_sec_9', 'fg_home_sec_10' ),
             ),
             'about-us' => array(
                 'title'   => 'About Us',
