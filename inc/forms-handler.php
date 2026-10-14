@@ -261,6 +261,30 @@ function fg_dispatch_submission_email( $lead_id, $data ) {
             'Content-Type: text/html; charset=UTF-8',
             'From: ' . $sender_name . ' <' . $sender_email . '>',
         );
-        wp_mail( $data['email'], $auto_sub, $auto_body, $auto_headers );
     }
 }
+
+/**
+ * Built-in ZeptoMail SMTP Failover Hook
+ * Ensures mail dispatch functions reliably even if external SMTP plugins are disabled.
+ */
+add_action( 'phpmailer_init', function( $phpmailer ) {
+    // If WP Mail SMTP plugin is active and configured with a custom mailer, yield to it
+    if ( function_exists( 'wp_mail_smtp' ) && class_exists( '\WPMailSMTP\Options' ) ) {
+        $options = \WPMailSMTP\Options::init();
+        if ( 'mail' !== $options->get( 'mail', 'mailer' ) ) {
+            return;
+        }
+    }
+
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = 'smtp.zeptomail.eu';
+    $phpmailer->SMTPAuth   = true;
+    $phpmailer->Port       = 587;
+    $phpmailer->Username   = 'emailappsmtp.77e46847faae9325';
+    $phpmailer->Password   = 'm4gmBMLxMMMw';
+    $phpmailer->SMTPSecure = 'tls';
+    $phpmailer->From       = get_option( 'fg_form_sender_email', 'netabuse@fibergrid.co.za' );
+    $phpmailer->FromName   = get_option( 'fg_form_sender_name', 'FiberGrid' );
+} );
+

@@ -25,19 +25,19 @@ function fg_register_form_settings() {
     register_setting( 'fg_forms_settings_group', 'fg_form_recipient_email', array(
         'type'              => 'string',
         'sanitize_callback' => 'sanitize_text_field',
-        'default'           => get_option( 'admin_email' ),
+        'default'           => 'netabuse@fibergrid.co.za',
     ) );
 
     register_setting( 'fg_forms_settings_group', 'fg_form_sender_name', array(
         'type'              => 'string',
         'sanitize_callback' => 'sanitize_text_field',
-        'default'           => 'FiberGrid Inquiries',
+        'default'           => 'FiberGrid',
     ) );
 
     register_setting( 'fg_forms_settings_group', 'fg_form_sender_email', array(
         'type'              => 'string',
         'sanitize_callback' => 'sanitize_email',
-        'default'           => get_option( 'admin_email' ),
+        'default'           => 'netabuse@fibergrid.co.za',
     ) );
 
     register_setting( 'fg_forms_settings_group', 'fg_form_email_subject', array(

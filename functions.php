@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'FIBERGRID_VERSION', '2.0.3' );
+define( 'FIBERGRID_VERSION', '2.0.4' );
 define( 'FG_DIR', get_template_directory() );
 define( 'FG_URI', get_template_directory_uri() );
 
