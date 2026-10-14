@@ -12,7 +12,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 class FiberGrid_Page_Seeder {
 
     public static function get_pages_blueprint() {
-        return json_decode( '{"front-page":{"title":"Home","widgets":["fg_home_sec_1","fg_home_sec_2","fg_home_sec_3","fg_home_sec_4","fg_home_sec_5","fg_home_sec_6","fg_home_sec_7","fg_home_sec_8","fg_home_sec_9","fg_home_sec_10"]},"about-us":{"title":"About Us","widgets":["fg_about_sec_1","fg_about_sec_2","fg_about_sec_3","fg_about_sec_4","fg_about_sec_5","fg_about_sec_6","fg_about_sec_7","fg_about_sec_8","fg_about_sec_9"]},"ip-transit":{"title":"High-Speed IP Transit","widgets":["fg_transit_sec_1","fg_transit_sec_2","fg_transit_sec_3","fg_transit_sec_4","fg_transit_sec_5","fg_transit_sec_6","fg_transit_sec_7","fg_transit_sec_8","fg_transit_sec_9","fg_transit_sec_10"]},"colocation":{"title":"Global Colocation","widgets":["fg_colo_sec_1","fg_colo_sec_2","fg_colo_sec_3","fg_colo_sec_4","fg_colo_sec_5","fg_colo_sec_6","fg_colo_sec_7","fg_colo_sec_8","fg_colo_sec_9","fg_colo_sec_10"]},"blog":{"title":"Engineering Blog","widgets":["fg_blog_sec_1","fg_blog_sec_2","fg_blog_sec_3","fg_blog_sec_4","fg_blog_sec_5","fg_blog_sec_6"]},"subsea-cable-expansion-2024":{"title":"Subsea Cable Expansion 2024","widgets":["fg_blog_single_sec_1","fg_blog_single_sec_2","fg_blog_single_sec_3","fg_blog_single_sec_4","fg_blog_single_sec_5"]},"contact":{"title":"Contact & Support","widgets":["fg_contact_sec_1","fg_contact_sec_2","fg_contact_sec_3","fg_contact_sec_4"]}}', true );
+        return array(
+            'front-page' => array(
+                'title'   => 'Home',
+                'widgets' => array( 'fg_home_sec_1', 'fg_home_sec_4', 'fg_home_sec_6', 'fg_home_sec_7', 'fg_home_sec_9' ),
+            ),
+            'about-us' => array(
+                'title'   => 'About Us',
+                'widgets' => array( 'fg_about_sec_2', 'fg_about_sec_4', 'fg_about_sec_5', 'fg_about_sec_7' ),
+            ),
+            'ip-transit' => array(
+                'title'   => 'High-Speed IP Transit',
+                'widgets' => array( 'fg_transit_sec_1', 'fg_transit_sec_4', 'fg_transit_sec_5', 'fg_transit_sec_7', 'fg_transit_sec_10' ),
+            ),
+            'colocation' => array(
+                'title'   => 'Global Colocation',
+                'widgets' => array( 'fg_colo_sec_2', 'fg_colo_sec_4', 'fg_colo_sec_5', 'fg_colo_sec_9', 'fg_colo_sec_7' ),
+            ),
+            'blog' => array(
+                'title'   => 'Engineering Blog',
+                'widgets' => array( 'fg_blog_sec_1', 'fg_blog_sec_3', 'fg_blog_sec_5' ),
+            ),
+            'subsea-cable-expansion-2024' => array(
+                'title'   => 'Subsea Cable Expansion 2024',
+                'widgets' => array( 'fg_blog_single_sec_1', 'fg_blog_single_sec_2', 'fg_blog_single_sec_3', 'fg_blog_single_sec_4' ),
+            ),
+            'contact' => array(
+                'title'   => 'Contact & Support',
+                'widgets' => array( 'fg_contact_sec_1', 'fg_contact_sec_2' ),
+            ),
+        );
     }
 
     public static function build_pages() {
